@@ -41,7 +41,6 @@ class ImageDragDropUpload extends HTMLElement {
                         class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.33rem] text-xs leading-[1.5] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
                         id="uploadImageInp"
                         name="uploadImageInp"
-                        awardData
                         placeholder=""
                         value=""/>
                     <label
@@ -131,13 +130,7 @@ class ImageDragDropUpload extends HTMLElement {
                     newImage.alt = 'new image';
                     this.imgsHolder.appendChild(newImage);
 
-                    const newImagePath = document.createElement('input');
-                    newImagePath.type = 'text'
-                    newImagePath.value = img.name + '|' + img.memeType
-                    newImagePath.setAttribute('mediaData', '');
-                    this.imgsHolder.appendChild(newImagePath);
-
-                    this.input.value += newImagePath.value + ','
+                    this.input.value += img.name + '|' + img.memeType + ','
                 });
                 
                 //  FIXME: Make ia a unique name and add in all HTML. value -> eg. 'comp-value'

@@ -99,6 +99,9 @@ class MediaApiController extends Controller
 
     public function delete (Request $request, $id) {
 
+        $in_storage = true;
+        $status_storage = false;
+
         if (!$id) {
             return response()->json([
                 'message' => 'Item ID has not benn supplied.'
@@ -115,20 +118,20 @@ class MediaApiController extends Controller
 
         $path_file_to_remove = storage_path("app\public\images\\") . $media->full_name;
         
-        if(!file_exists($path_file_to_remove)) {
-            return response()->json([
-                'message' => 'File dose not exists on server.'
-            ], ApiResultHandler::NOT_FOUND);
-        }
-
         try {
-
-            $status_storage = unlink(storage_path('app/public/images/' . $media->full_name));
-            
-            if(!$status_storage) {
-                return response()->json([
-                    'message' => 'Media can not be removed from server.'
-                ], ApiResultHandler::INTERNAL_SERVER_ERROR);
+            if(!file_exists($path_file_to_remove)) {
+                // return response()->json([
+                //     'message' => 'File dose not exists on server.'
+                // ], ApiResultHandler::NOT_FOUND);
+                $in_storage = false;
+            } else {
+                $status_storage = unlink(storage_path('app/public/images/' . $media->full_name));
+                
+                if(!$status_storage) {
+                    return response()->json([
+                        'message' => 'Media can not be removed from server.'
+                    ], ApiResultHandler::INTERNAL_SERVER_ERROR);
+                }
             }
 
         } catch (\Throwable $e) {
@@ -141,7 +144,9 @@ class MediaApiController extends Controller
 
         $payload = [
             'id' => $id,
-            'status' => ($status && $status_storage)
+            'inStorage' => $in_storage,
+            'statusStorageRemoved' => $status_storage,
+            'status' => $status
         ];
 
         return response()->json(['message' => $payload], ApiResultHandler::SUCCESS);

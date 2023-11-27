@@ -43,7 +43,11 @@
             <input type="text" name="title" id="title" disabled value="{{ $file->full_name }}" 
                 class="w-full break-all overflow-hidden text-ellipsis">
 
-            <submit-changes crud-type="<?= ($file->id == false)? 'new' : 'edit' ?>" apiPoint="{{ route('dashboard-media.update', ['id'=>$file->id ]) }}" event-bus-name="eventBusProjectEdit" itemClass="media" itemId="{{ $file->id }}" scopeselector="[data-ui='main-file']" toincludeidentifier="[mediaData]" />
+                @if($file->id)
+                <submit-changes crud-type="<?= ($file->id == false)? 'new' : 'edit' ?>" apiAction="PATCH" apiPoint="{{ route('dashboard-media.update', ['id'=>$file->id ]) }}" event-bus-name="eventBusProjectEdit" itemClass="media" itemId="{{ $file->id }}" scopeselector="[data-ui='main-file']" toincludeidentifier="[mediaData]" />
+                @else
+                <submit-changes crud-type="<?= ($file->id == false)? 'new' : 'edit' ?>" apiAction="POST" apiPoint="{{ route('dashboard-media.create') }}" event-bus-name="eventBusProjectEdit" itemClass="media" itemId="{{ $file->id }}" scopeselector="[data-ui='main-file']" toincludeidentifier="[mediaData]" />
+                @endif
         </div>
     </h2>
     
@@ -83,7 +87,6 @@
         <section class="w-1/1 md:w-3/4">
 
             <!-- Main content -->
-            <!-- <input mediaData type="hidden" name="wrap" value="{{ $file->wrap }}"/> -->
             <h3>Preview</h3>
 
             <!-- IMG -->
@@ -140,8 +143,8 @@
                         name="fileAlt"
                         mediaData
                         placeholder="Alt text"
-                        disabled
                         value=""/>
+                        <!-- disabled -->
                     <label
                         for="fileAlt"
                         class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] text-xs leading-[1.5] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.75rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.75rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"

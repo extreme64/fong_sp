@@ -75,6 +75,7 @@ Route::middleware('auth:api')->group(function () {
         Route::delete('/{id}/delete', [AwardApiController::class, 'delete'])->name('api-dashboard-award.delete');   
     });
 
+    // API Media
     Route::prefix('/media')->group(function () {
         Route::post('/new', [MediaApiController::class, 'create'])->name('dashboard-media.create');
         Route::get('/new', [MediaApiController::class, 'read'])->name('dashboard-media.read');
