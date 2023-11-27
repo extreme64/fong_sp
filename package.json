@@ -1,0 +1,26 @@
+{
+    "private": true,
+    "scripts": {
+        "dev": "npm run development",
+        "development": "mix",
+        "watch": "mix watch",
+        "hot": "mix watch --hot",
+        "prod": "npm run production",
+        "production": "mix --production"
+    },
+    "devDependencies": {
+        "@popperjs/core": "^2.11.6",
+        "axios": "^0.21",
+        "cross-env": "^7.0",
+        "laravel-mix": "^6.0",
+        "laravel-mix-polyfill": "^3.0.1",
+        "lodash": "^4.17.19",
+        "resolve-url-loader": "^4.0.0",
+        "sass": "^1.49.0",
+        "sass-loader": "^8.0.0"
+    },
+    "dependencies": {
+        "tailwindcss": "^3.3.3",
+        "tw-elements": "^1.0.0"
+    }
+}
