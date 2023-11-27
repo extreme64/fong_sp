@@ -1,0 +1,22 @@
+/* resources/css/app.css */
+
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+/* Your custom styles go here */
+
+/* Alien colors */
+:root{
+    --var-c1: #D2FF06;
+    --var-c2: #15AA5C; 
+    --var-c4: #258073; 
+    --var-c5: #042A05;
+}
+
+
+main > div {
+    background-position: left center;
+    background-image: url(/images/misc/rocket.svg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
