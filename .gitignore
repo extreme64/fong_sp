@@ -3,6 +3,7 @@
 /public/hot
 /public/storage
 /public/images/*
+/public/js/*
 /storage/*.key
 /vendor
 .env
@@ -17,9 +18,8 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
-
-# other
 aff_forc_laravel.sql
 aff_forc_laravel_skip_create.sql
 .env.example
+
 public/js/app.js
