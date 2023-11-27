@@ -22,3 +22,4 @@ yarn-error.log
 aff_forc_laravel.sql
 aff_forc_laravel_skip_create.sql
 .env.example
+public/js/app.js
