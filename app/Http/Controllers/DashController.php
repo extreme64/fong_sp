@@ -54,7 +54,7 @@ class DashController extends Controller
         {    
             $awardId = $attribute->attribute_value;
             $awardAsAttrInfo = Award::find($awardId);
-            $awardFileName = $awardAsAttrInfo->image_path;
+            $awardFileName = $awardAsAttrInfo->full_name;
 
             $attributeKey = $attribute->attribute_key;
             

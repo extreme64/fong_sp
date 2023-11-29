@@ -67,7 +67,7 @@
                         </td>
                         
                         <td class="flex-none w-[80px] px-2 py-4">
-                            <img width="30px" src="{{ asset('storage/images/'.$awd->image_path ) }}" alt="award illustration" />
+                            <img width="30px" src="{{ asset('storage/images/'.$awd->full_name ) }}" alt="award illustration" />
                         </td>
                         
                         <td class="flex-none w-[80px] px-2 py-4">
@@ -94,7 +94,7 @@
                                         <!-- TODO: Add api point -->
                                         <delete-item event-bus-name="eventBusProjectEdit" 
                                             projectid="{{ $awd->id }}" 
-                                            apipoint="{{ route('api-dashboard-award.delete', [ 'id' => $awd->id ])}}" 
+                                            apipoint="{{ route('api.dashboard.award.delete', [ 'id' => $awd->id ])}}" 
                                             itemname="project" 
                                             scopeselector="[data-ui='awards-list-main']" 
                                             toincludeidentifier="[data-ui='awards-list-item-tr-award-{{ $awd->id }}']" />

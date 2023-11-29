@@ -124,7 +124,6 @@
 
 
 
-
     <!-- Awards table -->
     <h2 class="mt-9 mb-5 font-bold">AWARDS</h2>
     <div class="max-w-full overflow-x-auto">
@@ -145,7 +144,9 @@
                     <td class="whitespace-nowrap px-6 md:py-4">{{ $awd->title }}</td>
                     <td class="whitespace-nowrap px-6 md:py-4">{{ $awd->type }}</td>
                     <td class="whitespace-nowrap px-6 md:py-4">{{ $awd->status }}</td>
-                    <td class="whitespace-nowrap px-6 md:py-4"><img width="30px" src="{{ asset('images/awards/' . $awd->image ) }}" alt="" /></td>
+                    <td class="whitespace-nowrap px-6 md:py-4">
+                        <img width="30px" src="{{ asset('storage/images/' . $awd->full_name ) }}" alt="" />
+                    </td>
                 </tr>
                 @endforeach
             </tbody>
@@ -172,12 +173,11 @@
                 @foreach($users as $usr)
                 <tr class="border-b dark:border-neutral-500">
                     <td class="whitespace-nowrap px-6 py-4 font-medium">{{ $usr->id }}</td>
-                    <td class="px-6 py-4 rounded shadow-md w-30 sm:w-20 animate-pulse dark:bg-gray-900">
-                        <div class="flex p-4 space-x-4 sm:px-8">
-                            <div class="flex-shrink-0 w-8 h-8 rounded-full bg-gray-700"></div>
-                        </div>
+                    <td class="px-6 py-4 rounded shadow-md w-30 sm:w-20">
+                        <img width="30px" 
+                            class="rounded-full"
+                            src="{{ asset('storage/images/' . $usr->full_name) }}" alt="profile picture  {{ $usr->name }}"/>
                     </td>
-                    <td class="whitespace-nowrap px-6 py-4"><img width="30px" src="http://localhost:8000/images/awards/award_image1.png" alt="" /></td>
                     <td class="whitespace-nowrap px-6 md:py-4">{{ $usr->name }}</td>
                     <td class="whitespace-nowrap px-6 md:py-4">{{ $usr->email }}</td>
                     <td class="whitespace-nowrap px-6 md:py-4">111</td>

@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 
 class ProductApiController extends Controller
 {
-    public function create (Request $request)
+    public function createProduct (Request $request)
     {
         
         $product =                  new Product();
@@ -33,7 +33,7 @@ class ProductApiController extends Controller
         return response()->json(['message' => $payload], ApiResultHandler::SUCCESS );
     }
 
-    public function update (Request $request, $id)
+    public function updateProduct (Request $request, $id)
     {
         $product =                  Product::find($id);
         $product->title =           ($request->title) ?? '';
@@ -54,7 +54,7 @@ class ProductApiController extends Controller
         return response()->json(['message' => $payload], ApiResultHandler::SUCCESS );
     }
 
-    public function delete (Request $request, $id)
+    public function deleteProduct (Request $request, $id)
     {
         $product = Product::find($id);
 
@@ -71,7 +71,7 @@ class ProductApiController extends Controller
         return response()->json(['message' => $payload], ApiResultHandler::SUCCESS );
     }
 
-    public function productRemoveAward (Request $request, $awardId) {
+    public function removeAwardProduct (Request $request, $awardId) {
         
     }
 }

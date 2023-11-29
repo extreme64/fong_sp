@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Auth;
 class ProjectApiController extends Controller implements ApiResultHandler
 {
 
-    public function projectNew(Request $request)
+    public function createProject(Request $request)
     {
         $user = auth()->user();
 
@@ -40,7 +40,7 @@ class ProjectApiController extends Controller implements ApiResultHandler
         return response()->json(['message' => $payload], ApiResultHandler::SUCCESS );
     }
 
-    public function projectSave(Request $request, $id)
+    public function updateProject(Request $request, $id)
     {
         $user = auth()->user();
 
@@ -65,7 +65,7 @@ class ProjectApiController extends Controller implements ApiResultHandler
     }
 
     
-    public function projectDelete(Request $request, $id)
+    public function deleteProject(Request $request, $id)
     {
         $user = auth()->user();
 
@@ -152,7 +152,7 @@ class ProjectApiController extends Controller implements ApiResultHandler
         foreach ($projectAttributes as $item) {
             $tmpKey = $item['attribute_key'];
             if( in_array($tmpKey, $keys) ) {
-                $awardUrls[$item['attribute_key']] = asset('storage/images/' . Award::find((int)$item['attribute_value'])->image_path);
+                $awardUrls[$item['attribute_key']] = asset('storage/images/' . Award::find((int)$item['attribute_value'])->full_name);
             }
         }
 

@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Storage;
 class MediaApiController extends Controller
 {
 
-    public function create (Request $request) {
+    public function createMedia (Request $request) {
     
         $fileNamesRaw           = explode(",", $request->dragDropUploadFiles);
         $batchFilesAlt          = $request->fileAlt;
@@ -62,7 +62,7 @@ class MediaApiController extends Controller
         return response()->json(['message' => $payload], ApiResultHandler::SUCCESS);
     }
 
-    public function read (Request $request) {
+    public function readMedia (Request $request) {
 
         $medias = Media::all();
 
@@ -73,7 +73,7 @@ class MediaApiController extends Controller
         return response()->json(['message' => $payload], ApiResultHandler::SUCCESS);
     }
 
-    public function update (Request $request, $id) {
+    public function updateMedia (Request $request, $id) {
 
         if (!$id) {
             return response()->json([
@@ -97,7 +97,7 @@ class MediaApiController extends Controller
         return response()->json(['message' => $payload], ApiResultHandler::SUCCESS);
     }
 
-    public function delete (Request $request, $id) {
+    public function deleteMedia (Request $request, $id) {
 
         $in_storage = true;
         $status_storage = false;

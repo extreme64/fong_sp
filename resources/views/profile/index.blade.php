@@ -186,7 +186,7 @@
                                     <div class=" border rounded-lg p-4 mx-auto">
                                         <div class="max-w-16 flex flex-col items-center">
 
-                                            <img width="130" src="{{ asset('storage/images/'.$award->image_path) }}" alt="">
+                                            <img width="130" src="{{ asset('storage/images/'.$award->full_name) }}" alt="">
 
                                         </div>
                                     </div>

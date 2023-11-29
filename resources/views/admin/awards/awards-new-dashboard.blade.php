@@ -42,7 +42,23 @@
             <!-- {{$award->title}}  -->
             <input type="text" name="title" id="title" awardData value="{{$award->title}}">
 
-            <submit-changes crud-type="<?= ($award->id == false)? 'new' : 'edit' ?>" event-bus-name="eventBusProjectEdit" itemClass="award" itemId="{{ $award->id }}" projectid="{{ $award->project_id }}" scopeselector="[data-ui='main-award']" toincludeidentifier="[awardData]" />
+            @if($award->id)
+            <submit-changes 
+                apiAction="PATCH"
+                apiPoint="{{ route('api.dashboard.award.update', ['id'=>$award->id]) }}" 
+                event-bus-name="eventBusProjectEdit" itemClass="award" itemId="{{ $award->id }}" 
+                projectid="{{ $award->project_id }}" 
+                scopeselector="[data-ui='main-award']" 
+                toincludeidentifier="[awardData]" />
+            @else
+            <submit-changes 
+                apiAction="POST"
+                apiPoint="{{ route('api.dashboard.award.create') }}" 
+                event-bus-name="eventBusProjectEdit" itemClass="award" itemId="{{ $award->id }}" 
+                projectid="{{ $award->project_id }}" 
+                scopeselector="[data-ui='main-award']" 
+                toincludeidentifier="[awardData]" />
+            @endif
         </div>
     </h2>
     

@@ -67,7 +67,7 @@
 
                             <!-- Preview image -->
                             <td class="flex-none w-[80px] px-2 py-4">
-                                <img width="30px" src="{{ asset('storage/images/' . $product->image_path ) }}" alt="award illustration" />
+                                <img width="30px" src="{{ asset('storage/images/' . $product->full_name ) }}" alt="award illustration" />
                             </td>
 
                             <td class="flex-none w-[80px] px-2 py-4">
@@ -95,7 +95,7 @@
                                             <delete-item 
                                             itemname="product" 
                                             itemid="{{ $product->id }}" 
-                                            apipoint="{{ route('api-dashboard-product.delete', ['id' => $product->id]) }}" 
+                                            apipoint="{{ route('api.dashboard.product.delete', ['id' => $product->id]) }}" 
                                             scopeselector="[data-ui='products-list-main']" 
                                             toincludeidentifier="[data-ui='products-list-item-tr-product-{{ $product->id }}']" 
                                             event-bus-name="eventBusProjectEdit" 

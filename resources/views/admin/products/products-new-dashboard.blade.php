@@ -45,7 +45,7 @@
             @if($product->id)
             <submit-changes 
                 apiAction="PATCH"
-                apiPoint="{{ route('api-dashboard-product.update', ['id'=>$product->id]) }}" 
+                apiPoint="{{ route('api.dashboard.product.update', ['id'=>$product->id]) }}" 
                 scopeselector="[data-ui='main-product']" 
                 toincludeidentifier="[productData]" 
                 event-bus-name="eventBusProjectEdit" 
@@ -53,7 +53,7 @@
             @else
             <submit-changes 
                 apiAction="POST"
-                apiPoint="{{ route('api-dashboard-product.create') }}" 
+                apiPoint="{{ route('api.dashboard.product.create') }}" 
                 scopeselector="[data-ui='main-product']" 
                 toincludeidentifier="[productData]" 
                 event-bus-name="eventBusProjectEdit" 
@@ -93,7 +93,7 @@
                                 <?php endif ?>
                         <!-- </td> -->
                         <td class="flex-none w-[80px] px-2 py-4">
-                            <img width="30px" src="{{ asset('storage/images/'.$product->image_path ) }}" alt="award illustration" />
+                            <img width="30px" src="{{ asset('storage/images/'.$product->full_name ) }}" alt="award illustration" />
                         </td>
                     </tr>                
                 </tbody>

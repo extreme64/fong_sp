@@ -44,9 +44,20 @@
                 class="w-full break-all overflow-hidden text-ellipsis">
 
                 @if($file->id)
-                <submit-changes crud-type="<?= ($file->id == false)? 'new' : 'edit' ?>" apiAction="PATCH" apiPoint="{{ route('dashboard-media.update', ['id'=>$file->id ]) }}" event-bus-name="eventBusProjectEdit" itemClass="media" itemId="{{ $file->id }}" scopeselector="[data-ui='main-file']" toincludeidentifier="[mediaData]" />
+                <submit-changes 
+                    apiAction="PATCH" 
+                    apiPoint="{{ route('api.dashboard.media.update', ['id'=>$file->id ]) }}" 
+                    event-bus-name="eventBusProjectEdit" itemClass="media" itemId="{{ $file->id }}" 
+                    scopeselector="[data-ui='main-file']" 
+                    toincludeidentifier="[mediaData]" />
                 @else
-                <submit-changes crud-type="<?= ($file->id == false)? 'new' : 'edit' ?>" apiAction="POST" apiPoint="{{ route('dashboard-media.create') }}" event-bus-name="eventBusProjectEdit" itemClass="media" itemId="{{ $file->id }}" scopeselector="[data-ui='main-file']" toincludeidentifier="[mediaData]" />
+                <submit-changes 
+                    apiAction="POST" 
+                    apiPoint="{{ route('api.dashboard.media.create') }}" 
+                    event-bus-name="eventBusProjectEdit" 
+                    itemClass="media" itemId="{{ $file->id }}" 
+                    scopeselector="[data-ui='main-file']" 
+                    toincludeidentifier="[mediaData]" />
                 @endif
         </div>
     </h2>
@@ -96,7 +107,7 @@
                 name="dragDropUploadFiles"
                 event-bus-name="eventBusProjectEdit" 
                 mediaData
-                apiPoint="{{ route('dashboard-media.upload') }}"
+                apiPoint="{{ route('api.dashboard.media.upload') }}"
             >
             <?php 
             endif ?>

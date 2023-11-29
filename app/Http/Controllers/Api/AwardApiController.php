@@ -10,7 +10,7 @@ use App\Http\Controllers\Controller;
 class AwardApiController extends Controller
 {
 
-    public function create (Request $request) {
+    public function createAward (Request $request) {
     
         $award = new Award();
         $award->project_id = $request->projectId;
@@ -32,7 +32,7 @@ class AwardApiController extends Controller
         return response()->json(['message' => $payload], ApiResultHandler::SUCCESS );
     }
     
-    public function edit (Request $request, $id)
+    public function updateAward (Request $request, $id)
     {
         $award = Award::find($id);
 
@@ -55,7 +55,7 @@ class AwardApiController extends Controller
         return response()->json(['message' => $payload], ApiResultHandler::SUCCESS );
     }
 
-    public function delete (Request $request, $id)
+    public function deleteAward (Request $request, $id)
     {
         $award = Award::find($id);
 
