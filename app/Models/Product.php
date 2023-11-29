@@ -31,12 +31,12 @@ class Product extends Model
     }
 
     /**
-     * Accessor method - award:image_path
+     * Accessor method - award:full_name
      *
      * @return string|null
      * 
      */
-    public function getImagePathAttribute()
+    public function getFullNameAttribute()
     {
         if ($this->media) {
             return $this->media->full_name;
