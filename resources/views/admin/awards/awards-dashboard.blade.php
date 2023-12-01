@@ -94,7 +94,7 @@
                                         <!-- TODO: Add api point -->
                                         <delete-item event-bus-name="eventBusProjectEdit" 
                                             projectid="{{ $awd->id }}" 
-                                            apipoint="{{ route('api.dashboard.award.delete', [ 'id' => $awd->id ])}}" 
+                                            apipoint="{{ route('award.destroy', [ 'award' => $awd->id ])}}" 
                                             itemname="project" 
                                             scopeselector="[data-ui='awards-list-main']" 
                                             toincludeidentifier="[data-ui='awards-list-item-tr-award-{{ $awd->id }}']" />

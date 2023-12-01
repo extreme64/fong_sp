@@ -45,7 +45,7 @@
             @if($product->id)
             <submit-changes 
                 apiAction="PATCH"
-                apiPoint="{{ route('api.dashboard.product.update', ['id'=>$product->id]) }}" 
+                apiPoint="{{ route('product.update', ['product'=>$product->id]) }}" 
                 scopeselector="[data-ui='main-product']" 
                 toincludeidentifier="[productData]" 
                 event-bus-name="eventBusProjectEdit" 
@@ -53,7 +53,7 @@
             @else
             <submit-changes 
                 apiAction="POST"
-                apiPoint="{{ route('api.dashboard.product.create') }}" 
+                apiPoint="{{ route('product.store') }}" 
                 scopeselector="[data-ui='main-product']" 
                 toincludeidentifier="[productData]" 
                 event-bus-name="eventBusProjectEdit" 

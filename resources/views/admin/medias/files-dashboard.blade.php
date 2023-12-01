@@ -79,7 +79,7 @@
                                                 <!-- TODO: Add api point -->
                                                 <delete-item event-bus-name="eventBusProjectEdit" 
                                                     projectid="{{ $file->id }}" 
-                                                    apipoint="{{ route('api.dashboard.media.delete', ['id' =>  $file->id ]) }}" 
+                                                    apipoint="{{ route('media.destroy', ['medium' =>  $file->id ]) }}" 
                                                     itemname="file" 
                                                     scopeselector="[data-ui='files-list-main']" 
                                                     toincludeidentifier="[data-ui='files-list-item-tr-file-{{ $file->id }}']" />

@@ -85,7 +85,7 @@
 
                                                 <delete-item event-bus-name="eventBusProjectEdit" 
                                                     projectid="{{$prj->id}}" 
-                                                    apipoint="{{ route('api.dashboard.project.delete', ['id' => $prj->id]) }}" 
+                                                    apipoint="{{ route('project.destroy', ['project' => $prj->id]) }}" 
                                                     itemname="project" 
                                                     scopeselector="[data-ui='projects-list-main']" 
                                                     toincludeidentifier="[data-ui='projects-list-item-tr-project-{{ $prj->id }}']" />

@@ -9,22 +9,22 @@ use App\Http\Controllers\Controller;
 
 class ProductApiController extends Controller
 {
-    public function createProduct (Request $request)
+    public function create (Request $request)
     {
         
-        $product =                  new Product();
-        $product->title =           ($request->title) ?? '';
-        $product->description =     ($request->description) ?? '';
-        // $product->status =          (int)$request->isPublic;
-        $product->media_id =        ($request->mediaId) ?? 1;
-        $product->image_url =       '';
-        $product->affiliate_url =   ($request->affiliateLink) ?? '';
-        $product->created_at =      now();
-        $product->updated_at =      now();
+        $productObj =                  new Product();
+        $productObj->title =           ($request->title) ?? '';
+        $productObj->description =     ($request->description) ?? '';
+        // $productObj->status =          (int)$request->isPublic;
+        $productObj->media_id =        ($request->mediaId) ?? 1;
+        $productObj->image_url =       '';
+        $productObj->affiliate_url =   ($request->affiliateLink) ?? '';
+        $productObj->created_at =      now();
+        $productObj->updated_at =      now();
         
         // $award->permalink = ($request->permalink) ?? preg_replace('/\s+/', '-', strtolower(trim($request->title)));
 
-        $status = $product->save();
+        $status = $productObj->save();
 
         $payload = [
             'status' => true
@@ -33,19 +33,19 @@ class ProductApiController extends Controller
         return response()->json(['message' => $payload], ApiResultHandler::SUCCESS );
     }
 
-    public function updateProduct (Request $request, $id)
+    public function update (Request $request, $product)
     {
-        $product =                  Product::find($id);
-        $product->title =           ($request->title) ?? '';
-        $product->description =     ($request->description) ?? '';
-        // $product->status =          (int)$request->isPublic;
-        $product->media_id =        ($request->mediaId) ?? 1;
-        $product->affiliate_url =   ($request->affiliateLink) ?? '';
-        $product->updated_at =      now();
+        $productObj =                  Product::find($product);
+        $productObj->title =           ($request->title) ?? '';
+        $productObj->description =     ($request->description) ?? '';
+        // $productObj->status =          (int)$request->isPublic;
+        $productObj->media_id =        ($request->mediaId) ?? 1;
+        $productObj->affiliate_url =   ($request->affiliateLink) ?? '';
+        $productObj->updated_at =      now();
         
         // $award->permalink = ($request->permalink) ?? preg_replace('/\s+/', '-', strtolower(trim($request->title)));
 
-        $status = $product->save();
+        $status = $productObj->save();
 
         $payload = [
             'status' => true
@@ -54,15 +54,15 @@ class ProductApiController extends Controller
         return response()->json(['message' => $payload], ApiResultHandler::SUCCESS );
     }
 
-    public function deleteProduct (Request $request, $id)
+    public function destroy (Request $request, $product)
     {
-        $product = Product::find($id);
+        $productObj = Product::find($product);
 
-        if (!$product) {
+        if (!$productObj) {
             return response()->json(['message' => 'Product not found'], ApiResultHandler::NOT_FOUND );
         }
 
-        $status = $product->delete();
+        $status = $productObj->delete();
 
         $payload = [
             'status' => $status
@@ -71,7 +71,4 @@ class ProductApiController extends Controller
         return response()->json(['message' => $payload], ApiResultHandler::SUCCESS );
     }
 
-    public function removeAwardProduct (Request $request, $awardId) {
-        
-    }
 }

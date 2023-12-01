@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Auth;
 class ProjectApiController extends Controller implements ApiResultHandler
 {
 
-    public function createProject(Request $request)
+    public function store(Request $request)
     {
         $user = auth()->user();
 
@@ -40,11 +40,11 @@ class ProjectApiController extends Controller implements ApiResultHandler
         return response()->json(['message' => $payload], ApiResultHandler::SUCCESS );
     }
 
-    public function updateProject(Request $request, $id)
+    public function update(Request $request, $project)
     {
         $user = auth()->user();
 
-        $project = Project::find($id);
+        $project = Project::find($project);
 
         $project->title = ($request->title) ?? '';
         $project->body = ($request->mainContent) ?? '';
@@ -64,12 +64,11 @@ class ProjectApiController extends Controller implements ApiResultHandler
         return response()->json(['message' => $payload], ApiResultHandler::SUCCESS );
     }
 
-    
-    public function deleteProject(Request $request, $id)
+    public function destroy(Request $request, $project)
     {
         $user = auth()->user();
 
-        $project = Project::find($id);
+        $project = Project::find($project);
 
         if (!$project) {
             return response()->json(['message' => 'Project not found'], ApiResultHandler::NOT_FOUND );
@@ -83,6 +82,7 @@ class ProjectApiController extends Controller implements ApiResultHandler
 
         return response()->json(['message' => $payload], ApiResultHandler::SUCCESS );
     }
+
     /**
      * [Description for saveAttributes]
      *
@@ -169,7 +169,7 @@ class ProjectApiController extends Controller implements ApiResultHandler
      * @return [type]
      * 
      */
-    public function saveAttribute(Request $request, $project_id, $attribute)
+    public function saveAttribute(Request $request, $project, $attribute)
     {
         $messages = [];
         $code = NULL;

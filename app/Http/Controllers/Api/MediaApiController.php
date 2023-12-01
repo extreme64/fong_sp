@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Storage;
 class MediaApiController extends Controller
 {
 
-    public function createMedia (Request $request) {
+    public function store (Request $request) {
     
         $fileNamesRaw           = explode(",", $request->dragDropUploadFiles);
         $batchFilesAlt          = $request->fileAlt;
@@ -41,18 +41,18 @@ class MediaApiController extends Controller
             };
 
             // TODO: Escape strings for new media entry.
-            $media                      = new Media;
-            $media->uploaded_user_id    = auth()->user()->id;
-            $media->full_name           = trim($name) . '.' . $extension;
-            $media->extension           = trim($extension);
-            $media->wrap                = trim($wrap);
-            $media->type                = $type;
-            $media->description         = trim($batchFilesDescription);
-            $media->created_at          = now();
-            $media->updated_at          = now();
+            $mediaObj                      = new Media;
+            $mediaObj->uploaded_user_id    = auth()->user()->id;
+            $mediaObj->full_name           = trim($name) . '.' . $extension;
+            $mediaObj->extension           = trim($extension);
+            $mediaObj->wrap                = trim($wrap);
+            $mediaObj->type                = $type;
+            $mediaObj->description         = trim($batchFilesDescription);
+            $mediaObj->created_at          = now();
+            $mediaObj->updated_at          = now();
 
-            $media->save();            
-            $new_media_ids[] = $media->id;
+            $mediaObj->save();            
+            $new_media_ids[] = $mediaObj->id;
         }
 
         $payload = [
@@ -62,7 +62,7 @@ class MediaApiController extends Controller
         return response()->json(['message' => $payload], ApiResultHandler::SUCCESS);
     }
 
-    public function readMedia (Request $request) {
+    public function index (Request $request) {
 
         $medias = Media::all();
 
@@ -73,50 +73,50 @@ class MediaApiController extends Controller
         return response()->json(['message' => $payload], ApiResultHandler::SUCCESS);
     }
 
-    public function updateMedia (Request $request, $id) {
+    public function update (Request $request, $medium) {
 
-        if (!$id) {
+        if (!$medium) {
             return response()->json([
                 'message' => 'Item ID has not benn supplied.'
             ], ApiResultHandler::BAD_REQUEST );
         }
 
         // TODO: Escape strings for new media entry.
-        $media                  = Media::find($id);
-        $media->description     = trim($request->fileDescription);
-        $media->updated_at      = now();
-        // $media->alt     = $request->fileAlt;
+        $mediaObj                  = Media::find($medium);
+        $mediaObj->description     = trim($request->fileDescription);
+        $mediaObj->updated_at      = now();
+        // $mediaObj->alt     = $request->fileAlt;
 
-        $status = $media->save();            
+        $status = $mediaObj->save();            
 
         $payload = [
-            'id' => $id,
+            'id' => $media,
             'status' => $status
         ];
 
         return response()->json(['message' => $payload], ApiResultHandler::SUCCESS);
     }
 
-    public function deleteMedia (Request $request, $id) {
+    public function destroy (Request $request, $medium) {
 
         $in_storage = true;
         $status_storage = false;
 
-        if (!$id) {
+        if (!$medium) {
             return response()->json([
                 'message' => 'Item ID has not benn supplied.'
             ], ApiResultHandler::BAD_REQUEST );
         }
         
-        $media = Media::find($id);
+        $mediaObj = Media::find($medium);
 
-        if (!$media) {
+        if (!$mediaObj) {
             return response()->json([
                 'message' => 'Item not found in database.'
             ], ApiResultHandler::NOT_FOUND );
         }
 
-        $path_file_to_remove = storage_path("app\public\images\\") . $media->full_name;
+        $path_file_to_remove = storage_path("app\public\images\\") . $mediaObj->full_name;
         
         try {
             if(!file_exists($path_file_to_remove)) {
@@ -125,7 +125,7 @@ class MediaApiController extends Controller
                 // ], ApiResultHandler::NOT_FOUND);
                 $in_storage = false;
             } else {
-                $status_storage = unlink(storage_path('app/public/images/' . $media->full_name));
+                $status_storage = unlink(storage_path('app/public/images/' . $mediaObj->full_name));
                 
                 if(!$status_storage) {
                     return response()->json([
@@ -143,7 +143,7 @@ class MediaApiController extends Controller
         $status = $media->delete();
 
         $payload = [
-            'id' => $id,
+            'id' => $media,
             'inStorage' => $in_storage,
             'statusStorageRemoved' => $status_storage,
             'status' => $status

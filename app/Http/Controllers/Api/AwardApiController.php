@@ -10,20 +10,20 @@ use App\Http\Controllers\Controller;
 class AwardApiController extends Controller
 {
 
-    public function createAward (Request $request) {
+    public function store (Request $request) {
     
-        $award = new Award();
-        $award->project_id = $request->projectId;
-        $award->title = ($request->title) ?? '';
-        $award->description = ($request->description) ?? '';
-        $award->type = ($request->awardType) ?? '';
-        // $award->permalink = ($request->permalink) ?? preg_replace('/\s+/', '-', strtolower(trim($request->title)));
-        $award->status = (int)$request->isPublic;
-        $award->media_id = ($request->mediaId) ?? 1;
-        $award->product_id = $request->productId;
-        $award->updated_at = now();
+        $awardObj = new Award();
+        $awardObj->project_id = $request->projectId;
+        $awardObj->title = ($request->title) ?? '';
+        $awardObj->description = ($request->description) ?? '';
+        $awardObj->type = ($request->awardType) ?? '';
+        // $awardObj->permalink = ($request->permalink) ?? preg_replace('/\s+/', '-', strtolower(trim($request->title)));
+        $awardObj->status = (int)$request->isPublic;
+        $awardObj->media_id = ($request->mediaId) ?? 1;
+        $awardObj->product_id = $request->productId;
+        $awardObj->updated_at = now();
 
-        $status = $award->save();
+        $status = $awardObj->save();
         
         $payload = [
             'status' => true
@@ -32,21 +32,21 @@ class AwardApiController extends Controller
         return response()->json(['message' => $payload], ApiResultHandler::SUCCESS );
     }
     
-    public function updateAward (Request $request, $id)
+    public function update (Request $request, $award)
     {
-        $award = Award::find($id);
+        $awardObj = Award::find($award);
 
-        $award->project_id = $request->projectId;
-        $award->title = ($request->title) ?? '';
-        $award->description = ($request->description) ?? '';
-        $award->type = ($request->awardType) ?? '';
-        // $award->permalink = ($request->permalink) ?? preg_replace('/\s+/', '-', strtolower(trim($request->title)));
-        $award->status = (int)$request->isPublic;
-        $award->media_id = ($request->mediaId) ?? 1;
-        $award->product_id = $request->productId;
-        $award->updated_at = now();
+        $awardObj->project_id = $request->projectId;
+        $awardObj->title = ($request->title) ?? '';
+        $awardObj->description = ($request->description) ?? '';
+        $awardObj->type = ($request->awardType) ?? '';
+        // $awardObj->permalink = ($request->permalink) ?? preg_replace('/\s+/', '-', strtolower(trim($request->title)));
+        $awardObj->status = (int)$request->isPublic;
+        $awardObj->media_id = ($request->mediaId) ?? 1;
+        $awardObj->product_id = $request->productId;
+        $awardObj->updated_at = now();
 
-        $status = $award->save();
+        $status = $awardObj->save();
 
         $payload = [
             'status' => $status
@@ -55,15 +55,15 @@ class AwardApiController extends Controller
         return response()->json(['message' => $payload], ApiResultHandler::SUCCESS );
     }
 
-    public function deleteAward (Request $request, $id)
+    public function destroy (Request $request, $award)
     {
-        $award = Award::find($id);
+        $awardObj = Award::find($award);
 
-        if (!$award) {
+        if (!$awardObj) {
             return response()->json(['message' => 'Award not found'], ApiResultHandler::NOT_FOUND );
         }
 
-        $status = $award->delete();
+        $status = $awardObj->delete();
 
         $payload = [
             'status' => $status

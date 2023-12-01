@@ -95,7 +95,7 @@
                                             <delete-item 
                                             itemname="product" 
                                             itemid="{{ $product->id }}" 
-                                            apipoint="{{ route('api.dashboard.product.delete', ['id' => $product->id]) }}" 
+                                            apipoint="{{ route('product.destroy', ['product' => $product->id]) }}" 
                                             scopeselector="[data-ui='products-list-main']" 
                                             toincludeidentifier="[data-ui='products-list-item-tr-product-{{ $product->id }}']" 
                                             event-bus-name="eventBusProjectEdit" 

@@ -45,7 +45,7 @@
             @if($award->id)
             <submit-changes 
                 apiAction="PATCH"
-                apiPoint="{{ route('api.dashboard.award.update', ['id'=>$award->id]) }}" 
+                apiPoint="{{ route('award.update', ['award'=>$award->id]) }}" 
                 event-bus-name="eventBusProjectEdit" itemClass="award" itemId="{{ $award->id }}" 
                 projectid="{{ $award->project_id }}" 
                 scopeselector="[data-ui='main-award']" 
@@ -53,7 +53,7 @@
             @else
             <submit-changes 
                 apiAction="POST"
-                apiPoint="{{ route('api.dashboard.award.create') }}" 
+                apiPoint="{{ route('award.store') }}" 
                 event-bus-name="eventBusProjectEdit" itemClass="award" itemId="{{ $award->id }}" 
                 projectid="{{ $award->project_id }}" 
                 scopeselector="[data-ui='main-award']" 

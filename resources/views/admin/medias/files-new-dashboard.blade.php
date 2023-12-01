@@ -46,14 +46,14 @@
                 @if($file->id)
                 <submit-changes 
                     apiAction="PATCH" 
-                    apiPoint="{{ route('api.dashboard.media.update', ['id'=>$file->id ]) }}" 
+                    apiPoint="{{ route('media.update', ['medium'=>$file->id ]) }}" 
                     event-bus-name="eventBusProjectEdit" itemClass="media" itemId="{{ $file->id }}" 
                     scopeselector="[data-ui='main-file']" 
                     toincludeidentifier="[mediaData]" />
                 @else
                 <submit-changes 
                     apiAction="POST" 
-                    apiPoint="{{ route('api.dashboard.media.create') }}" 
+                    apiPoint="{{ route('media.store') }}" 
                     event-bus-name="eventBusProjectEdit" 
                     itemClass="media" itemId="{{ $file->id }}" 
                     scopeselector="[data-ui='main-file']" 
@@ -107,7 +107,7 @@
                 name="dragDropUploadFiles"
                 event-bus-name="eventBusProjectEdit" 
                 mediaData
-                apiPoint="{{ route('api.dashboard.media.upload') }}"
+                apiPoint="{{ route('upload-image.store') }}"
             >
             <?php 
             endif ?>

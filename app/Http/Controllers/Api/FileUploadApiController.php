@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class FileUploadApiController extends Controller
 {
-    public function uploadImages(Request $request) {
+    public function store(Request $request) {
         $uploadedFiles = $request->file(); // Get all uploaded files
 
         $filePaths = [];
