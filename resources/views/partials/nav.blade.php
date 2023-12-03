@@ -95,7 +95,7 @@
                             <li>
                             <a
                                 class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-gray-700 hover:bg-gray-100 active:text-zinc-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-gray-400 dark:text-gray-200 dark:hover:bg-white/30"
-                                href="{{ route('account.dash') }}"
+                                href="{{ route('dashboard.account.index') }}"
                                 data-te-dropdown-item-ref
                                 >Account</a
                             >
@@ -108,7 +108,7 @@
                                                         <li>
                             <a
                                 class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-gray-700 hover:bg-gray-100 active:text-zinc-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-gray-400 dark:text-gray-200 dark:hover:bg-white/30"
-                                href="{{ route('profile.dash', ['user_slug' => Auth::user()->name]) }}"
+                                href="{{ route('dashboard.profile.index', ['user_slug' => Auth::user()->name]) }}"
                                 data-te-dropdown-item-ref
                                 >{{ Auth::user()->name }}</a
                             >
