@@ -68,7 +68,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard/products/{id}/edit', [ProductsDashboardController::class, 'edit'])->name('dashboard.products.edit');
     Route::get('/dashboard/products/new', [ProductsDashboardController::class, 'new'])->name('dashboard.products.new');
 
-    // Dashboard - Awards
+    // Dashboard - Awards 
     Route::get('/dashboard/awards', [AwardsDashboardController::class, 'index'])->name('dashboard.awards.index');
     Route::get('/dashboard/awards/{id}/edit', [AwardsDashboardController::class, 'edit'])->name('dashboard.awards.edit');
     Route::get('/dashboard/awards/new', [AwardsDashboardController::class, 'create'])->name('dashboard.awards.new');  

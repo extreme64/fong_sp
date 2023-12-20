@@ -41,7 +41,7 @@ Route::middleware(['auth:api'])->group(function () {
     Route::resource('project', ProjectApiController::class)
         ->only(['store', 'update', 'destroy']);
 
-    // // API Project attribute
+    // API Project attribute
     Route::resource('project.attributes', UserProjectAttributeApiController::class)
         ->only(['index', 'store', 'update', 'show', 'destroy']);
 

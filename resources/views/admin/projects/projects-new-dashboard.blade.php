@@ -129,7 +129,7 @@
                 <div class="overflow-x-auto ">
                     <div class="inline-block min-w-full ">
                         <div class="overflow-hidden">
-                            <table 
+                            <table
                                 data-ui="projects-list-main" 
                                 class="flex flex-col min-w-full text-left text-sm font-light bg-white">
                                 <thead class="border-b font-medium dark:border-neutral-500">
@@ -140,7 +140,7 @@
                                         <th scope="col" class="flex-none w-[1/5] px-2 py-4">Status</th>
                                         <th scope="col" class="flex-none w-[1/5] px-2 py-4">Goto/Edit</th>
                                     </tr>
-                                </thead>
+                                </thead> 
                                 <tbody class="flex flex-col">
                                     @foreach($awards as $award)
                                     <tr class="flex justify-between border-b dark:border-neutral-500">
