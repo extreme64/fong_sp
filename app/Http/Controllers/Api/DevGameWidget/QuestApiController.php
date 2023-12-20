@@ -133,6 +133,7 @@ class QuestApiController extends Controller
         $questStatus;
         $status;
         $metrics;
+        $isLevelUp = false;
 
         // If valid data
         // TODO: Unserials data, parse url
@@ -168,7 +169,12 @@ class QuestApiController extends Controller
         // Set level (Level)
         if($scoreModifierAmount !== 0 ) 
         {
+            $tmplLevel = $currentLevel;
             $newLevel = Level::checkNextLevel($newScore, $currentLevel);
+            if($tmplLevel < $newLevel)
+            {
+                $isLevelUp = true;
+            }
         }
         
         // Update questToUpdate
@@ -177,6 +183,7 @@ class QuestApiController extends Controller
             $questToUpdate->score = $newScore;
             $questToUpdate->level = $newLevel; 
         }
+
         
         // Check won conditions {GameLogic}
         $gameLogic->runWinConditions();
@@ -203,6 +210,7 @@ class QuestApiController extends Controller
             'doneStatus' => $questDone, 
             'newLevel' => $newLevel,
             'newScore' => round($newScore, 1, PHP_ROUND_HALF_UP),
+            'isLevelUp' => $isLevelUp,
             'abilitiesUsed' => $questToUpdate->abilities_used
         ];
 
