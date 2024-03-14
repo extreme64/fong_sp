@@ -1,8 +1,9 @@
-# ForC:
+# Fong SP:
 
-Public-facing component presenting projects.
-Serves as the user's central point for account management and settings.
-Acts as the gateway for users to interact with different applications.
+Public-facing presenting projects.
+
+User part - central point for account management and settings.
+Acts as the gateway to interact with different applications.
 
 ## Scalability and Hosting:
 
@@ -29,16 +30,11 @@ Associated API controllers handle DGW tracking data, calculations, and other fun
 Provides functionality for tracking progress through quests and associated stats.
 Contains the business logic for the system.
 
-## Future Considerations:
-
-Potential for hosting components on high-performance servers as the project grows.
-Facilitates collaboration as the team expands.
-
 -- *** --
 
 ## Tech:
-Laravel, Web Components, Tailwind, CSS Components: Tailwind Elements, Mamba UI
+PHP, SQL, Laravel, Web Components, Tailwind, Tailwind Elements, Mamba UI
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Licensed under the [MIT license](https://opensource.org/licenses/MIT).
