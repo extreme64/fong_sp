@@ -22,3 +22,4 @@ aff_forc_laravel_skip_create.sql
 .env.example
 public/css/app.css
 public/js/app.js
+QUERIES.sql
