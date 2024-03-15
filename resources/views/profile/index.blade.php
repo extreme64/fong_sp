@@ -178,7 +178,7 @@
                                 <hr class="mb-2"/>
 
                                 <h3>
-                                    <a href="{{ route('dash.awards') }}">{{ __('Awards') }}</a>
+                                    <a href="{{ route('dashboard.awards.index') }}">{{ __('Awards') }}</a>
                                 </h3>
                             
                                 <div class="grid sm:grid-cols-2 md:grid-cols-3 md:justify-center grid-cols-6 mt-8 gap-4">
@@ -199,7 +199,7 @@
                                 <hr class="mb-2"/>
 
                                 <h3>
-                                    <a href="{{ route('dash.awards') }}">{{  __('Quests') }}</a>
+                                    <a href="{{ route('dashboard.awards.index') }}">{{  __('Quests') }}</a>
                                 </h3>
 
                                 <div>
