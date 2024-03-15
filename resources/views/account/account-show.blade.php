@@ -133,7 +133,7 @@
                                 <hr class="mb-2"/>
 
                                 <h3>
-                                    <a href="{{ route('dash.awards') }}">{{ __('Awards') }}</a>
+                                    <a href="{{ route('dashboard.account.awards') }}">{{ __('Awards') }}</a>
                                 </h3>
                             
                                 <div class="grid grid-cols-2 mt-8 gap-4 md:grid-cols-3 lg:grid-cols-4">
@@ -163,7 +163,7 @@
                                 <hr class="mb-2"/>
 
                                 <h3>
-                                    <a href="{{ route('dash.awards') }}">{{  __('Quests') }}</a>
+                                    <a href="{{ route('dashboard.account.awards') }}">{{  __('Quests') }}</a>
                                 </h3>
 
                                 <div class="grid grid-cols-1 md:grid-cols-1">
