@@ -1,22 +1,112 @@
 /* resources/css/app.css */
 
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
-/* Your custom styles go here */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 /* Alien colors */
-:root{
+:root {
     --var-c1: #D2FF06;
-    --var-c2: #15AA5C; 
-    --var-c4: #258073; 
+    --var-c2: #15AA5C;
+    --var-c4: #258073;
     --var-c5: #042A05;
+
+    --var-main-mt: 3rem;
+    --var-main-mb: 3rem;
 }
 
-
-main > div {
+main>div {
     background-position: left center;
     background-image: url(/images/misc/rocket.svg);
     background-repeat: no-repeat;
     background-attachment: fixed;
+}
+
+body {
+    font-family: "Albert Sans", sans-serif;
+    font-smooth: always;
+    font-weight: 400;
+    font-style: normal;
+    margin: 0;
+    padding: 0;
+}
+
+.code {
+    font-family: "Sometype Mono", monospace;
+    font-weight: 400;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+h1,
+h2,
+h3 {
+    font-family: "Kode Mono", monospace;
+}
+
+:is(h2, h3, h4, h5, h6):not(.no-glob-styles) {
+    margin-top: 3rem;
+}
+
+h1 {
+    font-weight: 700;
+    font-style: normal;
+    font-size: 40px;
+}
+
+h2 {
+    font-weight: 600;
+    font-style: normal;
+    font-size: 28px;
+}
+
+h3 {
+    font-weight: 500;
+    font-style: normal;
+    font-size: 22px;
+}
+
+h4 {
+    font-size: 16px;
+}
+
+h5 {
+    font-size: 14px;
+}
+
+h6 {
+    font-size: 12px;
+}
+
+p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: #337ab7;
+    /* Default link color */
+}
+
+a:hover {
+    color: #23527c;
+    /* Hover link color */
+}
+
+/* a:visited {
+} */
+
+a:focus {
+    outline: none;
 }
