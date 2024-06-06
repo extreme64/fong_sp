@@ -232,7 +232,7 @@
                         <div>
                             
                             <img 
-                                src="{{ asset('storage/images/' . $fl->full_name ) }}" 
+                                src="{{ asset( $mediaPathAwards.$fl->full_name ) }}" 
                                 alt="" 
                                 class="object-cover mb-2 w-full aspect-square flex-wrap dark:bg-gray-500"
                             >

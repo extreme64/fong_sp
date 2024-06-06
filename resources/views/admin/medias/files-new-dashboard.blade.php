@@ -113,7 +113,7 @@
             endif ?>
             
             @isset($file->id)
-            <img width="300px" src="{{ asset('storage/images/' . $file->full_name ) }}" alt="image2" />
+            <img width="300px" src="{{ $mediaPath . $file->full_name }}" alt="image2" />
             @endisset
             <!-- Main content END -->
             

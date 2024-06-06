@@ -53,7 +53,7 @@
                                 <td class="flex-1 px-2 py-4 break-all overflow-hidden text-ellipsis" title="{{ $file->description }}">{{ $file->full_name }}</td>
                                 <td class="flex-none w-[100px] px-2 py-4 overflow-hidden text-ellipsis">{{ $file->wrap }}</td>
                                 <td class="flex-none w-[80px] px-2 py-4">
-                                    <img width="30px" src="{{ asset('storage/images/'.$file->full_name ) }}" alt="image" />
+                                    <img width="30px" src="{{ $mediaPath.$file->full_name }}" alt="image" />
                                 </td>
                                 <td class="flex-none w-[80px] px-2 py-4">
                                     <div class="flex">

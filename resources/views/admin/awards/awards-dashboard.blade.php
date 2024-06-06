@@ -4,7 +4,6 @@
 
 @section('description', 'Add or edit awards. Asigne to projects.')
 
-
 @section('main')
 <main class="w-full">
 
@@ -67,7 +66,7 @@
                         </td>
                         
                         <td class="flex-none w-[80px] px-2 py-4">
-                            <img width="30px" src="{{ asset('storage/images/'.$awd->full_name ) }}" alt="award illustration" />
+                            <img width="30px" src="{{ asset($mediaPathAwards.$awd->full_name ) }}" alt="award illustration" />
                         </td>
                         
                         <td class="flex-none w-[80px] px-2 py-4">

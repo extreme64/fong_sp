@@ -5,7 +5,7 @@
 @section('description', 'The Dev Game Widget is an innovative browser extension designed to enhance the productivity and engagement of developers and tech enthusiasts. This extension brings the excitement of gaming into the development environment')
 
 @section('content')
-<div class="relative flex items-top justify-center min-h-screen  dark:bg-gray-900 py-4 sm:pt-0">
+<div class="content-dev-game relative flex items-top justify-center min-h-screen  dark:bg-gray-900 py-4 sm:pt-0">
     <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
         <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
 
@@ -15,7 +15,7 @@
                     class="block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
                     <div class="flex flex-wrap items-center">
                         <div class="hidden shrink-0 grow-0 basis-auto lg:flex lg:w-6/12 xl:w-4/12">
-                        <img src="https://mdbcdn.b-cdn.net/img/new/ecommerce/vertical/088.jpg" alt="Trendy Pants and Shoes"
+                        <img src="{{ asset('images/misc/illustrations/dgw.jpg') }}" alt="Trendy Pants and Shoes"
                             class="w-full rounded-t-lg lg:rounded-tr-none lg:rounded-bl-lg" />
                         </div>
                         <div class="w-full shrink-0 grow-0 basis-auto lg:w-6/12 xl:w-8/12">
@@ -35,7 +35,7 @@
                                 </p>
                                 
                                 
-                                <p>With the Dev Game Widget, developers can unleash their creativity, improve problem-solving skills, and find a healthy balance between work and play. Whether it's a coding challenge between colleagues or a moment of relaxation during intense coding sessions, the Dev Game Widget aims to make coding more enjoyable and rewarding.</p>
+                                <p>With2 the Dev Game Widget, developers can unleash their creativity, improve problem-solving skills, and find a healthy balance between work and play. Whether it's a coding challenge between colleagues or a moment of relaxation during intense coding sessions, the Dev Game Widget aims to make coding more enjoyable and rewarding.</p>
                 
                                 <h4>Installation and Compatibility:</h4>
                                 

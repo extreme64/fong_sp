@@ -67,7 +67,7 @@
 
                             <!-- Preview image -->
                             <td class="flex-none w-[80px] px-2 py-4">
-                                <img width="30px" src="{{ asset('storage/images/' . $product->full_name ) }}" alt="award illustration" />
+                                <img width="30px" src="{{ asset( $mediaPath.$product->full_name ) }}" alt="award illustration" />
                             </td>
 
                             <td class="flex-none w-[80px] px-2 py-4">

@@ -1,8 +1,8 @@
-@extends('layouts.page')
+@extends('layouts.dash-page')
 
 @section('content')
 <div class="container">
-    <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 py-4 sm:pt-0">
+    <div class="relative flex items-top justify-center min-h-screen dark:bg-gray-900 py-4 sm:pt-0">
         <div class="w-full max-w-6xl mx-auto sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-1 bg-white shadow-lg rounded-lg">
 
@@ -137,25 +137,26 @@
                                 </h3>
                             
                                 <div class="grid grid-cols-2 mt-8 gap-4 md:grid-cols-3 lg:grid-cols-4">
-                                    @foreach ($user->awards as $award)
-                                    <div class="flex flex-col justify-between border rounded-lg p-4 mx-auto">
-                                        <div class="max-w-16 flex flex-col items-center">
+                                    @if(isset($user->awards))
+                                        @foreach ($user->awards as $award)
+                                        <div class="flex flex-col justify-between border rounded-lg p-4 mx-auto">
+                                            <div class="max-w-16 flex flex-col items-center">
 
-                                            <project-attributes-setting 
-                                                award-id="{{ $award->id }}" 
-                                                award-type="{{ $award->type }}" 
-                                                award-src="{{ asset('storage/images/'.$award->full_name) }}"
-                                                award-title="{{ $award->title }}" 
-                                                event-bus-name="eventBusSetup">
-                                            </project-attributes-setting>
+                                                <project-attributes-setting 
+                                                    award-id="{{ $award->id }}" 
+                                                    award-type="{{ $award->type }}" 
+                                                    award-src="{{ asset('storage/images/'.$award->full_name) }}"
+                                                    award-title="{{ $award->title }}" 
+                                                    event-bus-name="eventBusSetup">
+                                                </project-attributes-setting>
 
-                                            <hr/>
+                                                <hr/>
 
-                                            
+                                                
+                                            </div>
                                         </div>
-                                    </div>
-                                    @endforeach
-                                    
+                                        @endforeach
+                                    @endif
                                 </div>
 
 

@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <div class="profile relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 py-4 sm:pt-0">
+    <div class="profile relative flex items-top justify-center min-h-screen dark:bg-gray-900 py-4 sm:pt-0">
         <div class="w-full max-w-6xl mx-auto sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-1 bg-white shadow-lg rounded-lg">
 
@@ -182,16 +182,17 @@
                                 </h3>
                             
                                 <div class="grid sm:grid-cols-2 md:grid-cols-3 md:justify-center grid-cols-6 mt-8 gap-4">
-                                    @foreach ($user->awards as $award)
-                                    <div class=" border rounded-lg p-4 mx-auto">
-                                        <div class="max-w-16 flex flex-col items-center">
+                                    @if(isset($user->awards))
+                                        @foreach ($user->awards as $award)
+                                        <div class=" border rounded-lg p-4 mx-auto">
+                                            <div class="max-w-16 flex flex-col items-center">
 
-                                            <img width="130" src="{{ asset('storage/images/'.$award->full_name) }}" alt="">
+                                                <img width="130" src="{{ asset('storage/images/'.$award->full_name) }}" alt="">
 
+                                            </div>
                                         </div>
-                                    </div>
-                                    @endforeach
-                                    
+                                        @endforeach
+                                    @endif
                                 </div>
 
 

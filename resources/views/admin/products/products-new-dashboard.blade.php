@@ -93,7 +93,7 @@
                                 <?php endif ?>
                         <!-- </td> -->
                         <td class="flex-none w-[80px] px-2 py-4">
-                            <img width="30px" src="{{ asset('storage/images/'.$product->full_name ) }}" alt="award illustration" />
+                            <img width="30px" src="{{ asset( $mediaPath.$product->full_name ) }}" alt="award illustration" />
                         </td>
                     </tr>                
                 </tbody>
@@ -146,7 +146,7 @@
                         <div>
                             
                             <img 
-                                src="{{ asset('storage/images/' . $fl->full_name ) }}" 
+                                src="{{ asset( $mediaPath.$fl->full_name ) }}" 
                                 alt="" 
                                 class="object-cover mb-2 w-full aspect-square flex-wrap dark:bg-gray-500"
                             >
