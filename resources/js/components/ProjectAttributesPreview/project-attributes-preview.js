@@ -19,18 +19,16 @@ class ProjectAttributesPreview extends HTMLElement {
 
         this.innerHTML = `
             <style>
-               /* TODO: add style for preview */
+               
             </style>
             <div data-ui="wrap" class="attributes-preview flex justify-center items-center rounded-lg bg-cover bg-center bg-no-repeat"  style="background-image: url(../storage/images/${ backgroundImg })">
             
-                <!-- Leveling backdrop -->
-                <!--  -->
+
                 <div class="flex flex-col items-center m-8">
                     <span>${ username }</span>
-                    <!-- Avatar -->
+                    
                     <img data-ui="avatarPrev" class="flex w-32 rounded-lg border-solid border-4 border-orange-600 bg-gradient-to-b from-red-500 to-yellow-500" src="../storage/images/${ avatarImg }" alt="">
 
-                    <!-- Terminal -->
                     <img data-ui="terminalPrev" class="flex w-5/6 rounded-lg" src="../storage/images/${ terminalImg }" alt="">
 
                     <div class="flex flex-col items-center w-5/6 p-4 rounded-lg bg-gradient-to-b from-yellow-500 to-yellow-500">
