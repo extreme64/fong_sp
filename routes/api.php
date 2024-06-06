@@ -4,37 +4,30 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Api\UserApiController;
+use App\Http\Controllers\Api\UserProjectAttributeApiController;
+
 use App\Http\Controllers\Api\AwardApiController;
 use App\Http\Controllers\Api\MediaApiController;
 use App\Http\Controllers\Api\ProductApiController;
 use App\Http\Controllers\Api\ProjectApiController;
 use App\Http\Controllers\Api\FileUploadApiController;
-use App\Http\Controllers\Api\UserProjectAttributeApiController;
+
 use App\Http\Controllers\Api\DevGameWidget\QuestApiController;
 use App\Http\Controllers\Api\DevGameWidget\AbilityApiController;
-use App\Http\Controllers\ProjectsDashboardController;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Register API routes. Routes are loaded by the RouteServiceProvider within 
-| a group which is assigned the "api" middleware group.
-|
-*/
 
-// Login
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+
+Route::get('/user', function (Request $request) {
     return $request->user();
-});
+})->middleware('auth:sanctum');
+    
+Route::post('/remote-login', [UserApiController::class, 'remoteLogin']);
 
 // Authenticated routes
 Route::middleware(['auth:api'])->group(function () {
     
     // API User
-    Route::post('/remote-login', [UserApiController::class, 'remoteLogin']);
-    Route::get('/user', [UserApiController::class, 'getCurrentUser']);
+    // Route::get('/user', [UserApiController::class, 'getCurrentUser']);
     Route::get('/profile', [UserApiController::class, 'getProfile']);
 
     // API Project

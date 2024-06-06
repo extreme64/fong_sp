@@ -29,7 +29,6 @@ use App\Http\Controllers\ProjectsDashboardController;
 Auth::routes();
 
 
-
 // Homepage
 Route::get('/', function () {
     return view('welcome');
@@ -37,6 +36,12 @@ Route::get('/', function () {
 
 // About
 Route::get('/about', [AboutController::class, 'index'])->name('about.index');
+
+// Npw
+Route::get('/now', function () {
+    return view('now');
+});
+
 
 // Products
 Route::prefix('/products')->group(function () {
@@ -84,7 +89,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard/files/new',          [FilesDashboardController::class, 'create'])->name('dashboard.files.new');
     
     // Dashboard - Account
-    Route::get('/dashboard/account',        [AccountController::class, 'index'])->name('dashboard.account.show');
+    Route::get('/dashboard/account/',        [AccountController::class, 'index'])->name('dashboard.account.show');
     Route::get('/dashboard/account/awards', [AccountController::class, 'awards'])->name('dashboard.account.awards');
 });
 
