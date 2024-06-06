@@ -2,19 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Award;
 use App\Models\Media;
 use App\Models\Product;
-use Illuminate\Http\Request;
+use App\Traits\MediaPathTrait;
+use App\Constants\Media AS MediaConstants;
 
 class ProductsDashboardController extends Controller
 {
+    use MediaPathTrait;
 
     public function list()
     {
         $products = Product::all();
 
-        return view('admin.products.products-dashboard', compact('products'));
+        return view('admin.products.products-dashboard', compact('products'))
+            ->with(['mediaPath' => $this->craftPath(MediaConstants::PATH_ROOT)]);
     }
 
     public function new()
@@ -33,7 +35,8 @@ class ProductsDashboardController extends Controller
         $product =  (object)$product;
 
 
-        return view('admin.products.products-new-dashboard', compact(['product', 'files']));
+        return view('admin.products.products-new-dashboard', compact(['product', 'files']))
+            ->with(['mediaPath' => $this->craftPath(MediaConstants::PATH_ROOT)]);
     }
 
     public function edit($id)
@@ -47,7 +50,8 @@ class ProductsDashboardController extends Controller
         }
 
 
-        return view('admin.products.products-new-dashboard', compact('product', 'files'));
+        return view('admin.products.products-new-dashboard', compact('product', 'files'))
+            ->with(['mediaPath' => $this->craftPath(MediaConstants::PATH_ROOT)]);
     }
 
     public function setting()

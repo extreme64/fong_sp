@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Award;
 use App\Models\Project;
 use App\Models\ProjectQuest;
 use Illuminate\Http\Request;
@@ -16,6 +17,8 @@ class ProfileController extends Controller
 
         $user = Auth::user();
         $userProjects = Project::all();
+
+        $awards = Award::all();
 
         $projectId = 1;
 
@@ -37,9 +40,9 @@ class ProfileController extends Controller
         ->get();
 
         $questCount = count($projectsQuests);
-        // $avrScore =
-        // $avrLevel =
-        // $winRate =
+        $avrScore = 0;
+        $avrLevel = 0;
+        $winRate = 0;
 
         forEach($projectsQuests as $quest) {
             $avrScore = round($quest->sumScore, 1);
@@ -48,6 +51,6 @@ class ProfileController extends Controller
         }
 
 
-        return view('profile.index', compact('title', 'userProjects', 'projectsQuests', 'user', 'avrScore', 'avrLevel', 'winRate'));
+        return view('profile.index', compact('title', 'userProjects', 'projectsQuests', 'user', 'avrScore', 'avrLevel', 'winRate', 'awards'));
     }
 }

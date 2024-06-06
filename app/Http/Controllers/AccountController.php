@@ -15,9 +15,9 @@ use App\Constants\ProjectAttributeKeys;
 
 class AccountController extends Controller
 {
-    public function index($projectId=1)
+    public function index()
     {
-
+        $projectId = 1;
         $place_holder_id = 1;
         
         $user = Auth::user();
@@ -34,6 +34,20 @@ class AccountController extends Controller
             ->where('user_id', $user->id)
             ->get();
         
+
+        $projectUserSetup = [
+            'avatarId' => 0,
+            'avatarTitle' => 'Default Title',
+            'avatarImg' => 'default.png',
+            'terminalId' => 0,
+            'terminalTitle' => 'Default Title',
+            'terminalImg' => 'default.png',
+            'backgroundId' => 0,
+            'backgroundTitle' => 'Default Title',
+            'backgroundImg' => 'default.png',
+            'theme' => 1
+        ];
+
         foreach ($userProjectAttributes as $attribute) 
         {    
             $awardId = $attribute->attribute_value;
@@ -41,29 +55,36 @@ class AccountController extends Controller
             $awardFileName = $awardAsAttrInfo->full_name;
 
             $attributeKey = $attribute->attribute_key;
-            
+    
             switch($attributeKey) {
                 case ProjectAttributeKeys::AVATAR_ID :
-                    $projectUserSetup['avatarId'] = $awardId;
-                    $projectUserSetup['avatarTitle'] = $awardAsAttrInfo->title;
-                    $projectUserSetup['avatarImg'] = $awardFileName;
+                    if (isset($awardAsAttrInfo)) {
+                        $projectUserSetup['avatarId'] = $awardId;
+                        $projectUserSetup['avatarTitle'] = $awardAsAttrInfo->title ?? 'Default Title';
+                        $projectUserSetup['avatarImg'] = $awardFileName ?? 'default.png';
+                    }
                     break;
                 case ProjectAttributeKeys::TERMINAL_ID :
-                    $projectUserSetup['terminalId'] = $awardId;
-                    $projectUserSetup['terminalTitle'] = $awardAsAttrInfo->title;
-                    $projectUserSetup['terminalImg'] = $awardFileName;
+                    if (isset($awardAsAttrInfo)) {
+                        $projectUserSetup['terminalId'] = $awardId;
+                        $projectUserSetup['terminalTitle'] = $awardAsAttrInfo->title ?? 'Default Title';
+                        $projectUserSetup['terminalImg'] = $awardFileName ?? 'default.png';
+                    }
                     break;
                 case ProjectAttributeKeys::BACKGROUND_ID :
-                    $projectUserSetup['backgroundId'] = $awardId;
-                    $projectUserSetup['backgroundTitle'] = $awardAsAttrInfo->title;
-                    $projectUserSetup['backgroundImg'] = $awardFileName;
+                    if (isset($awardAsAttrInfo)) {
+                        $projectUserSetup['backgroundId'] = $awardId;
+                        $projectUserSetup['backgroundTitle'] = $awardAsAttrInfo->title ?? 'Default Title';
+                        $projectUserSetup['backgroundImg'] = $awardFileName ?? 'default.png';
+                    }
                     break;
                 case ProjectAttributeKeys::THEME_ID :
-                    $projectUserSetup['theme'] = $awardId;
+                    if (isset($awardId)) {
+                        $projectUserSetup['theme'] = $awardId ?? 1;
+                    }
                     break;
             }
         }
-
 
         $themesUIOptions = '';
         

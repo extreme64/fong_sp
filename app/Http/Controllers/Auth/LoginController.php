@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Exception;
 use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Misc\RouteWrapperController;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -23,29 +24,34 @@ class LoginController extends Controller
     use AuthenticatesUsers;
 
     /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
-    protected $redirectTo = RouteServiceProvider::HOME;
-
-
-    /**
      * Redirect user after login to dash.
      *
      * @var string
      */
-    protected $redirectToDash = '/account';
+    protected $redirectToDash = 'dashboard/account';
+
+    private $routeWrapperController;
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(RouteWrapperController $routeWrapperController)
     {
-        $this->middleware('guest')->except('logout');
+        // $this->middleware('guest')->except('logout');
+        $this->routeWrapperController = $routeWrapperController;
     }
+
+    protected function authenticated(Request $request, $user)
+    {
+        try {
+            $user->createToken('login_token');
+        } catch (Exception $e) {
+            throw new Exception('Failed to create API token. ' . $e->getMessage());
+        }
+    }
+
 
     /**
      * Override path to SEO link structure
@@ -55,6 +61,6 @@ class LoginController extends Controller
      */
     protected function redirectPath()
     {
-        return $this->redirectToDash;
+        return $this->routeWrapperController->generateUrl('dashboard.account.show');
     }
 }

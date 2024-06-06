@@ -2,30 +2,39 @@
 
 namespace App\Http\Controllers\Api;
 
-use Illuminate\Http\Request;
-
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Exception;
 
 class UserApiController extends Controller
 {
     public function remoteLogin(Request $request)
     {
-        $credentials = $request->only('email', 'password');
-        
-        if (auth()->attempt($credentials)) {
-            $user =  auth()->user();
+        try {
+            $credentials = $request->only('email', 'password');
 
-            $user_data = [
-                'id' => $user->id,
-                'name' => $user->name,
-                'email' => $user->email
-            ];
+            if (auth()->attempt($credentials)) {
+                $user = auth()->user();
 
-            return response()->json(['token' => $user->api_token, 'user' => $user_data], 200);
+                $token = $user->createToken('remote_login_token');
+
+                $apiToken = $token->accessToken;
+
+                $user_data = [
+                    'id' => $user->id,
+                    'name' => $user->name,
+                    'email' => $user->email,
+                ];
+
+                return response()->json(['token' => $apiToken, 'user' => $user_data], 201);
+            } else {
+                return response()->json(['message' => 'Invalid credentials'], 401);
+            }
+        } catch (Exception $e) {
+            return response()->json(['message' => 'Error occurred while logging in' . $e->getMessage()], 500);
         }
-
-        return response()->json(['message' => 'Invalid credentials'], 401);
     }
+
 
     public function getProfile(Request $request) 
     {

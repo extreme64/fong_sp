@@ -6,13 +6,13 @@ use App\Models\User;
 use App\Models\Award;
 use App\Models\Media;
 use App\Models\Project;
-use Illuminate\Http\Request;
-use App\Contracts\ApiResultHandler;
-use Illuminate\Support\Facades\Storage;
+use App\Constants\Media AS MediaConstants;
+use App\Traits\MediaPathTrait;
 
 
 class AwardsDashboardController extends Controller
 {
+    use MediaPathTrait;
 
     public function index()
     {
@@ -20,8 +20,8 @@ class AwardsDashboardController extends Controller
 
         $awards = Award::all();
 
-
-        return view('admin.awards.awards-dashboard', compact('awards', 'user'));
+        return view('admin.awards.awards-dashboard', compact('awards', 'user'))
+            ->with(['mediaPathAwards' => $this->craftPath(MediaConstants::PATH_AWARDS)]);
     }
 
     public function edit($id)
@@ -54,7 +54,8 @@ class AwardsDashboardController extends Controller
             $file->isChecked = ( $award->media_id === $file->id ) ? 'checked="checked"' : '';
         }
 
-        return view('admin.awards.awards-new-dashboard', compact('award', 'projects', 'files', 'user', 'award_type_options'));
+        return view('admin.awards.awards-new-dashboard', compact('award', 'projects', 'files', 'user', 'award_type_options'))
+            ->with(['mediaPathAwards' => $this->craftPath(MediaConstants::PATH_AWARDS)]);
     }
 
 
@@ -71,7 +72,6 @@ class AwardsDashboardController extends Controller
             (object) ['value' => 'item',         'text' => 'Item',          'selected' => '']
         ];
 
-        $award;
         $award['id'] = false; 
         $award['project_id'] = null;
         $award['product_id'] = null;
@@ -90,7 +90,7 @@ class AwardsDashboardController extends Controller
     {
         $user = auth()->user();
 
-        $awards = Awards::all();
+        $awards = Award::all();
 
         return view('awards.projects-dashboard', compact(['awards', 'user']));
     }

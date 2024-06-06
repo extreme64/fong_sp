@@ -3,18 +3,22 @@
 namespace App\Http\Controllers;
 
 use App\Models\Media;
-use Illuminate\Http\Request;
+use App\Constants\Media AS MediaConstants;
+use App\Traits\MediaPathTrait;
 use Illuminate\Support\Facades\Storage;
 
 class FilesDashboardController extends Controller
 {
+    use MediaPathTrait;
+
     public function index()
     {
         $user = auth()->user();
         
         $files = Media::all()->sortByDesc('id');
         
-        return view('admin.medias.files-dashboard', compact('files', 'user'));
+        return view('admin.medias.files-dashboard', compact('files', 'user'))
+            ->with(['mediaPath' => $this->craftPath(MediaConstants::PATH_ROOT)]);
     }
 
     /**
@@ -28,7 +32,7 @@ class FilesDashboardController extends Controller
     {
         $user = auth()->user();
 
-        // TODO: Get Meia files from DB, not folder file list.
+        // TODO: Get media files from DB, not folder file list.
         $files = Storage::files('public/images');        
         $fileNames = array_map('basename', $files);
         $fileInfo = NULL;
@@ -79,6 +83,7 @@ class FilesDashboardController extends Controller
 
         $file = Media::find($id);
 
-        return view('admin.medias.files-new-dashboard', compact('file', 'user'));
+        return view('admin.medias.files-new-dashboard', compact('file', 'user'))
+            ->with(['mediaPath' => $this->craftPath(MediaConstants::PATH_ROOT)]);
     }
 }

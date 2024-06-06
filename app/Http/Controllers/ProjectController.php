@@ -5,10 +5,11 @@ namespace App\Http\Controllers;
 use Config; 
 
 use App\Models\Project;
-use App\Models\ProjectAttribute;
+use App\Models\UserProjectAttribute;
+use App\Constants\ProjectAttributeKeys;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 
 class ProjectController extends Controller
 {
@@ -69,7 +70,7 @@ class ProjectController extends Controller
 
         $userId = Auth::id();
 
-        ProjectAttribute::create([
+        UserProjectAttribute::create([
             'user_id' => $userId,
             'project_id' => $projectId,
             'attribute_key' => ProjectAttributeKeys::AVATAR_KEY,
@@ -78,7 +79,7 @@ class ProjectController extends Controller
             'updated_at' => now(),
         ]);
 
-        ProjectAttribute::create([
+        UserProjectAttribute::create([
             'user_id' => $userId,
             'project_id' => $projectId,
             'attribute_key' => ProjectAttributeKeys::BACKGROUND_KEY,
@@ -87,7 +88,7 @@ class ProjectController extends Controller
             'updated_at' => now(),
         ]);
 
-        ProjectAttribute::create([
+        UserProjectAttribute::create([
             'user_id' => $userId,
             'project_id' => $projectId,
             'attribute_key' => ProjectAttributeKeys::TERMINAL_KEY,
@@ -96,7 +97,7 @@ class ProjectController extends Controller
             'updated_at' => now(),
         ]);
 
-        ProjectAttribute::create([
+        UserProjectAttribute::create([
             'user_id' => $userId,
             'project_id' => $projectId,
             'attribute_key' => ProjectAttributeKeys::THEME_KEY,
