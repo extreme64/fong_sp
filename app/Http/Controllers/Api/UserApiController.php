@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Exception;
+use Response;
+use Illuminate\Contracts\Routing\ResponseFactory;
 
 class UserApiController extends Controller
 {
@@ -31,12 +33,11 @@ class UserApiController extends Controller
                 return response()->json(['message' => 'Invalid credentials'], 401);
             }
         } catch (Exception $e) {
-            return response()->json(['message' => 'Error occurred while logging in' . $e->getMessage()], 500);
+            return response()->json(['message' => 'Error occurred while logging in'], 500);
         }
     }
 
-
-    public function getProfile(Request $request) 
+    public function getProfile(Request $request)
     {
         $user = $request->user();
 
@@ -49,4 +50,6 @@ class UserApiController extends Controller
 
         return response()->json(['profile' => $return], 200);
     }
+
+
 }
