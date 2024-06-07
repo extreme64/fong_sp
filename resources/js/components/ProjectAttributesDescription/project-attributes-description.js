@@ -121,7 +121,8 @@ class ProjectAttributesDescription extends BaseComp {
 
     async saveAttributePics() {
 
-        const storedApiToken = localStorage.getItem('apiToken');
+        const storedApiToken = localStorage.getItem('login_token');
+        
         const projectAttributesUrl = `/api/project/${projectId}/attributes`;
         
         const projectData = dashStore.getProjectData(projectId);

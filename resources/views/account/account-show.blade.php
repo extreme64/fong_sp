@@ -23,12 +23,7 @@
                     <script>
                         const userId = {{ $user->id }};
                         const projectId = {{ $showingProjectId }};
-                        
-                        // FIXME: Direct to localStorege for the token
-                        const apiToken = "{{ $userAPIaccessToken }}";
-                        localStorage.setItem('apiToken', apiToken);
                     </script>
-
 
 
                     <!--Tabs navigation-->

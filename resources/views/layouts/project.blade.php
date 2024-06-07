@@ -28,9 +28,18 @@
     <!-- Assets -->
     @if (env('APP_ENV') == 'local')
         <link href="/build/{{ $manifest['resources/css/app.css']['file'] }}" rel="stylesheet" />
+        <script src="/build/{{ $manifest['resources/js/app.js']['file'] }}"></script>
     @else
         <link href="/build/{{ $manifest['resources/css/app.css']['file'] }}" rel="stylesheet" />
+        <script src="/build/{{ $manifest['resources/js/app.js']['file'] }}"></script>
     @endif
+
+    @auth
+        <script>
+            const token = `{{ session('login_token') }}`;
+            localStorage.setItem('login_token', token);
+        </script>
+    @endauth
 
 </head>
 
@@ -72,6 +81,7 @@
     </footer>
 
     <script src="{{ asset('js/tw-elements.umd.min.js') }}"></script>
+    
 </body>
 
 </html>

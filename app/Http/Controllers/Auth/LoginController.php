@@ -45,13 +45,17 @@ class LoginController extends Controller
 
     protected function authenticated(Request $request, $user)
     {
+        $tokenName = 'login_token';
+        
         try {
-            $user->createToken('login_token');
+
+            $token = $user->createToken($tokenName);
+            $request->session()->put($tokenName, $token->accessToken);
+
         } catch (Exception $e) {
-            throw new Exception('Failed to create API token. ' . $e->getMessage());
+            throw new Exception('Failed to create API token.');
         }
     }
-
 
     /**
      * Override path to SEO link structure

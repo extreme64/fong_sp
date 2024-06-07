@@ -25,19 +25,7 @@ class SubmitChanges extends BaseComp {
 
         let method = ''
         let reqUrlFull = ''
-        let reqUrlTypePart = ''
-        const crudType = this.getAttribute('crud-type');
-        if (crudType === 'new') {
-            reqUrlTypePart = 'new'
-            method = 'POST'
-            reqUrlFull = `/api/${itemClass}/${reqUrlTypePart}`
-        } else if (crudType === 'edit') {
-            reqUrlTypePart = 'save'
-            method = 'PATCH'
-            reqUrlFull = `/api/${itemClass}/${itemId}/${reqUrlTypePart}`
-        }
 
-        // NOTE: New way to craft request's url
         if (apiPoint) {
             reqUrlFull = apiPoint
             method = apiAction
@@ -70,17 +58,17 @@ class SubmitChanges extends BaseComp {
             let inputs = scopeSelector.querySelectorAll(toIncludeIdentifier)
 
             try {
-                const storedApiToken = localStorage.getItem('apiToken');
+                const headers = new Headers();
 
-                let headers = new Headers();
-                headers.append('Authorization', `Bearer ${storedApiToken}`);
+                headers.append('Authorization', `Bearer ${token}`); 
                 headers.append('Content-Type', 'application/json');
+                headers.append('Accept', 'application/json');
 
-                let inputsData = {}
+                const inputsData = {}
 
                 inputs.forEach((inp) => {
 
-                    let attrName = inp.getAttribute('name')
+                    const attrName = inp.getAttribute('name')
                     let val = ''
                     if (inp.type === "checkbox"){
                         val = inp.checked
@@ -90,14 +78,9 @@ class SubmitChanges extends BaseComp {
                             val = inp.value
                         }
                     } else {
-                        if (!inp.value) {
-                            val = inp.getAttribute('value')
-                        }else {
-                            val = inp.value.trim()
-                        }
+                        val = !inp.value ? inp.getAttribute('value') : inp.value.trim();
                     }
                     if(val){
-                        console.log('fin val ' + attrName, val);
                         inputsData[attrName] = val
                     }
                 })
@@ -105,20 +88,16 @@ class SubmitChanges extends BaseComp {
                 if(!reqUrlFull) {
                     throw new Error('API point url, not present!');
                 }
-                
 
                 const response = await fetch(reqUrlFull, {
-                    method: method,
-                    headers: headers,
+                    method,
+                    headers,
                     body: JSON.stringify(inputsData)
                 });
 
                 const data = await response.json();
-
                 if (response.ok) {
-
                     const message = data.message;
-                    console.log(message);
 
                     this.eventBus.publish(BaseComp.eventName(BaseComp.CHANGED, this.constructor.name), {
                         projectId: projectId,
@@ -128,7 +107,6 @@ class SubmitChanges extends BaseComp {
                     if(relaodOnSucces){
                         window.location.reload();
                     }
-
                 } else {
                     console.error('Error ...', response);
                 }
