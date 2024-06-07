@@ -14,14 +14,14 @@ use App\Http\Controllers\Api\FileUploadApiController;
 
 use App\Http\Controllers\Api\DevGameWidget\QuestApiController;
 use App\Http\Controllers\Api\DevGameWidget\AbilityApiController;
-
-
+use Illuminate\Session\Middleware\StartSession;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
     
 Route::post('/remote-login', [UserApiController::class, 'remoteLogin']);
+
 
 // Authenticated routes
 Route::middleware(['auth:api'])->group(function () {
@@ -67,7 +67,3 @@ Route::middleware(['auth:api'])->group(function () {
         ->only(['index', 'update', 'destroy']);
     
 });
-
-// Public data
-// Route::get('/user/{user_id}', [UserPublicApiController::class, 'getUser']);
-// Route::get('/project/{project_id}', [ProjectPublicApiController::class, 'getProject']);
