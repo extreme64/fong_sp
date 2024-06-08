@@ -71,7 +71,7 @@
                                             <h2 class="mb-5">{{ __('Info') }}</h2>
                                             <div class="flex flex-col items-center">
                                                 <div class="flex-shrink-0 mb-6 h-44 sm:h-32 sm:w-32 sm:mb-0">
-                                                    <img src="{{ asset('storage/images/'.$user->full_name ) }}" alt="" class="object-cover object-center w-full h-full rounded dark:bg-gray-500">
+                                                    <img src="{{ asset('images/'.$user->full_name ) }}" alt="" class="object-cover object-center w-full h-full rounded dark:bg-gray-500">
                                                 </div>
                                                 <div class="flex p-4 flex-col space-y-4">
                                                     <div>
@@ -187,7 +187,7 @@
                                         <div class=" border rounded-lg p-4 mx-auto">
                                             <div class="max-w-16 flex flex-col items-center">
 
-                                                <img width="130" src="{{ asset('storage/images/'.$award->full_name) }}" alt="">
+                                                <img width="130" src="{{ asset('images/'.$award->full_name) }}" alt="">
 
                                             </div>
                                         </div>

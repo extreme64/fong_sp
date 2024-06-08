@@ -145,7 +145,7 @@
                     <td class="whitespace-nowrap px-6 md:py-4">{{ $awd->type }}</td>
                     <td class="whitespace-nowrap px-6 md:py-4">{{ $awd->status }}</td>
                     <td class="whitespace-nowrap px-6 md:py-4">
-                        <img width="30px" src="{{ asset('storage/images/' . $awd->full_name ) }}" alt="" />
+                        <img width="30px" src="{{ asset('images/' . $awd->full_name ) }}" alt="" />
                     </td>
                 </tr>
                 @endforeach
@@ -176,7 +176,7 @@
                     <td class="px-6 py-4 rounded shadow-md w-30 sm:w-20">
                         <img width="30px" 
                             class="rounded-full"
-                            src="{{ asset('storage/images/' . $usr->full_name) }}" alt="profile picture  {{ $usr->name }}"/>
+                            src="{{ asset('images/' . $usr->full_name) }}" alt="profile picture  {{ $usr->name }}"/>
                     </td>
                     <td class="whitespace-nowrap px-6 md:py-4">{{ $usr->name }}</td>
                     <td class="whitespace-nowrap px-6 md:py-4">{{ $usr->email }}</td>
@@ -200,7 +200,7 @@
                     <img 
                         alt="gallery"
                         class="block h-full w-full rounded-lg object-cover object-center"
-                        src="{{ asset('storage/images/' . $fl->full_name ) }}" />
+                        src="{{ asset('images/' . $fl->full_name ) }}" />
                 </div>
             </div>
         @endforeach

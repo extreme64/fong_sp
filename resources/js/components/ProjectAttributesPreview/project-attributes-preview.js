@@ -21,15 +21,15 @@ class ProjectAttributesPreview extends HTMLElement {
             <style>
                
             </style>
-            <div data-ui="wrap" class="attributes-preview flex justify-center items-center rounded-lg bg-cover bg-center bg-no-repeat"  style="background-image: url(../storage/images/${ backgroundImg })">
+            <div data-ui="wrap" class="attributes-preview flex justify-center items-center rounded-lg bg-cover bg-center bg-no-repeat"  style="background-image: url(../images/${ backgroundImg })">
             
 
                 <div class="flex flex-col items-center m-8">
                     <span>${ username }</span>
                     
-                    <img data-ui="avatarPrev" class="flex w-32 rounded-lg border-solid border-4 border-orange-600 bg-gradient-to-b from-red-500 to-yellow-500" src="../storage/images/${ avatarImg }" alt="">
+                    <img data-ui="avatarPrev" class="flex w-32 rounded-lg border-solid border-4 border-orange-600 bg-gradient-to-b from-red-500 to-yellow-500" src="../images/${ avatarImg }" alt="">
 
-                    <img data-ui="terminalPrev" class="flex w-5/6 rounded-lg" src="../storage/images/${ terminalImg }" alt="">
+                    <img data-ui="terminalPrev" class="flex w-5/6 rounded-lg" src="../images/${ terminalImg }" alt="">
 
                     <div class="flex flex-col items-center w-5/6 p-4 rounded-lg bg-gradient-to-b from-yellow-500 to-yellow-500">
                         <span>🔖 Some task name</span>

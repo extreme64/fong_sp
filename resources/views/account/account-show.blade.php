@@ -140,7 +140,7 @@
                                                 <project-attributes-setting 
                                                     award-id="{{ $award->id }}" 
                                                     award-type="{{ $award->type }}" 
-                                                    award-src="{{ asset('storage/images/'.$award->full_name) }}"
+                                                    award-src="{{ asset('images/'.$award->full_name) }}"
                                                     award-title="{{ $award->title }}" 
                                                     event-bus-name="eventBusSetup">
                                                 </project-attributes-setting>

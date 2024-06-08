@@ -7,7 +7,7 @@ use App\Models\Award;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use App\Contracts\ApiResultHandler;
-
+use App\Constants\Media AS MediaConstants;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use App\Models\UserProjectAttribute;
@@ -152,7 +152,7 @@ class ProjectApiController extends Controller implements ApiResultHandler
         foreach ($projectAttributes as $item) {
             $tmpKey = $item['attribute_key'];
             if( in_array($tmpKey, $keys) ) {
-                $awardUrls[$item['attribute_key']] = asset('storage/images/' . Award::find((int)$item['attribute_value'])->full_name);
+                $awardUrls[$item['attribute_key']] = asset(MediaConstants::PATH_AWARDS . Award::find((int)$item['attribute_value'])->full_name);
             }
         }
 

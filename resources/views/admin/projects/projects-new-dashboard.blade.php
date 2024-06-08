@@ -147,7 +147,7 @@
                                         <td class="flex-none w-[1/5] px-2 py-4 font-xs">{{ $award->id }}</td>
                                         <td class="flex-1 px-2 py-4 overflow-hidden text-ellipsis">
                                             <div class="flex">
-                                                <img class="h-6 w-6 mx-2 rounded-md" laoding="lazy" src="{{ asset('storage/images/'.$award->full_name ) }}" alt="award feature image">{{ $award->title }}
+                                                <img class="h-6 w-6 mx-2 rounded-md" laoding="lazy" src="{{ asset('images/'.$award->full_name ) }}" alt="award feature image">{{ $award->title }}
                                             </div>
                                         </td>
                                         <td class="flex-none w-[1/5] px-2 py-4 text-xs">{{ $award->type }}</td>

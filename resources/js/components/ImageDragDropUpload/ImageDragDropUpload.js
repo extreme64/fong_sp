@@ -98,7 +98,7 @@ class ImageDragDropUpload extends HTMLElement {
 
         try {
 
-            const storedApiToken = localStorage.getItem('apiToken');
+            const storedApiToken = localStorage.getItem('login_token'); 
 
             let headers = new Headers();
             headers.append('Authorization', `Bearer ${storedApiToken}`);

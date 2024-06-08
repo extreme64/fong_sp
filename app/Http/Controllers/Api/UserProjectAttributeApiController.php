@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\Award;
+use App\Constants\Media AS MediaConstants;
 use Illuminate\Http\Request;
 use App\Contracts\ApiResultHandler;
 use Illuminate\Support\Facades\Log;
@@ -40,7 +41,7 @@ class UserProjectAttributeApiController extends Controller
             $status = $userAttribute->save();
 
             if (!$status) {
-                $errorText = "User attribute ['${attributeKey}': ${attributeValue}], " . ($userAttribute->wasRecentlyCreated ? 'INSERT' : 'UPDATE') . " fail!";
+                $errorText = "User attribute ['$attributeKey': $attributeValue], " . ($userAttribute->wasRecentlyCreated ? 'INSERT' : 'UPDATE') . " fail!";
                 $this->handleQueryError($messages, $code, $errorText);
             }
         }
@@ -75,7 +76,7 @@ class UserProjectAttributeApiController extends Controller
         foreach ($projectAttributes as $item) {
             $tmpKey = $item['attribute_key'];
             if (in_array($tmpKey, $keys)) {
-                $awardUrls[$item['attribute_key']] = asset('storage/images/' . Award::find((int) $item['attribute_value'])->full_name);
+                $awardUrls[$item['attribute_key']] = asset(MediaConstants::PATH_AWARDS . Award::find((int) $item['attribute_value'])->full_name);
             }
         }
 
@@ -108,7 +109,7 @@ class UserProjectAttributeApiController extends Controller
         $status = $userAttribute->save();
 
         if (!$status) {
-            $errorText = "User attribute ['${attribute}': ${data[$attribute]}], UPDATE fail!";
+            $errorText = "User attribute ['$attribute': " . $data[$attribute] . "], UPDATE fail!";
             $this->handleQueryError($messages, $code, $errorText);
         }
 
@@ -131,6 +132,6 @@ class UserProjectAttributeApiController extends Controller
         Log::debug('ERROR:', [$errorText]);
 
         $code = ApiResultHandler::DB_QUERY_ERROR;
-        $messages[] = "ERROR: ${errorText}";
+        $messages[] = "ERROR: $errorText";
     }
 }
