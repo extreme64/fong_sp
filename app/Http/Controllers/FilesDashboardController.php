@@ -38,7 +38,7 @@ class FilesDashboardController extends Controller
         $fileInfo = NULL;
 
         foreach($fileNames as $index => $file) {
-            $filePath = public_path('storage/images/' . $file);
+            $filePath = public_path(MediaConstants::PATH_ROOT . $file);
             
             $mime = mime_content_type($filePath);
             
