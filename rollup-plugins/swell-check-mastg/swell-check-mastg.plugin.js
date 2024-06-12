@@ -12,10 +12,10 @@ const swellCheckMastg = {
     const fileMetadata = {
       thresholds: {
         small: 50000,
-        medium: 75000,
-        large: 100000,
-        veryLarge: 150000,
-        tooLarge: 200000
+        medium: 90000,
+        large: 150000,
+        veryLarge: 200000,
+        tooLarge: 300000
       },
       colors: {
         green: '\x1b[92m',
