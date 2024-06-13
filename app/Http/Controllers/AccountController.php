@@ -92,7 +92,7 @@ class AccountController extends Controller
         foreach ($themesData as $keyTheme => $valueTheme) 
         {
             $isSelected = ($keyTheme == $projectUserSetup['theme']) ? "selected" : '';
-            $themesUIOptions .= "<option value='{$keyTheme}' ${isSelected} >{$valueTheme['title']}</option>";
+            $themesUIOptions .= "<option value='{$keyTheme}' $isSelected >{$valueTheme['title']}</option>";
         }
         
 
