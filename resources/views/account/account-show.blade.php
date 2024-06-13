@@ -1,4 +1,4 @@
-@extends('layouts.dash-page')
+@extends('layouts.account')
 
 @section('content')
 <div class="container">
