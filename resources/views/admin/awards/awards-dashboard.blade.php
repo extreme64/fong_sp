@@ -1,4 +1,4 @@
-@extends('layouts.project')
+@extends('layouts.dash-page')
 
 @section('title', 'Awards Dashboard')
 
