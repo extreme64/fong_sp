@@ -24,7 +24,7 @@ class DashController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
 
     /**
@@ -87,7 +87,7 @@ class DashController extends Controller
         foreach ($themesData as $keyTheme => $valueTheme) 
         {
             $isSelected = ($keyTheme == $projectUserSetup['theme']) ? "selected" : '';
-            $themesUIOptions .= "<option value='{$keyTheme}' ${isSelected} >{$valueTheme['title']}</option>";
+            $themesUIOptions .= "<option value='{$keyTheme}' $isSelected >{$valueTheme['title']}</option>";
         }
         
 
