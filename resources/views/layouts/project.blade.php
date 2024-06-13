@@ -52,26 +52,26 @@
     <main class="layout-project">
         <div class="relative flex items-top justify-center min-h-screen bg-neutral-300 dark:bg-gray-900 py-4 sm:pt-0">
 
-            <div class="relative flex w-full items-top justify-center min-h-screen dark:bg-gray-900 py-4 sm:pt-0">
-                <div class="w-full max-w-6xl mx-auto sm:px-6 lg:px-8">
+            <div
+                class="content-dev-game relative flex items-top justify-center min-h-screen  dark:bg-gray-900 py-4 sm:pt-0">
+                <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
                     <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
 
+                        @yield('intro')
+                        
+                        @yield('gallery')
+                        
+                        @yield('start-cta')
+                        
+                        @yield('about')
 
-                        <section class="flex flex-col md:flex-row max-w-full mb-32">
+                        @include('partials.other-projects')
 
-                            @include('partials.admin-nav')
-
-                            @yield('main')
+                        @include('partials.subscribe')
 
                     </div>
-                    </section>
-
                 </div>
             </div>
-        </div>
-
-
-
 
         </div>
     </main>
@@ -81,7 +81,7 @@
     </footer>
 
     <script src="{{ asset('js/tw-elements.umd.min.js') }}"></script>
-    
+
 </body>
 
 </html>

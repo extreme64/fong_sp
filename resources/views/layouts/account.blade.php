@@ -45,38 +45,21 @@
 
 <body class="antialiased">
 
-<header>
+    <header>
         @include('partials.nav')
     </header>
 
-    <main class="layout-dash-page">
+    <main class="layout-page">
         <div class="relative flex items-top justify-center min-h-screen bg-neutral-300 dark:bg-gray-900 py-4 sm:pt-0">
-
-            <div class="relative flex w-full items-top justify-center min-h-screen dark:bg-gray-900 py-4 sm:pt-0">
-                <div class="w-full max-w-6xl mx-auto sm:px-6 lg:px-8">
-                    <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
-
-
-                        <section class="flex flex-col md:flex-row max-w-full mb-32">
-
-                            @include('partials.admin-nav')
-
-                            @yield('main')
-
-                    </div>
-                    </section>
-
-                </div>
-            </div>
+            @yield('content')
         </div>
     </main>
 
-    <footer>
+    <footer class="">
         @include('partials.footer')
     </footer>
 
     <script src="{{ asset('js/tw-elements.umd.min.js') }}"></script>
-
 </body>
 
 </html>

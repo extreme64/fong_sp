@@ -41,7 +41,7 @@
     </header>
 
     <main class="layout-page">
-        <div class="relative flex items-top justify-center min-h-screen bg-neutral-300 dark:bg-gray-900 py-4 sm:pt-0">
+        <div class="relative flex items-top justify-center bg-neutral-300 dark:bg-gray-900 py-4 sm:pt-0">
             @yield('content')
         </div>
     </main>
