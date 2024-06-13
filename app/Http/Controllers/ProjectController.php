@@ -38,6 +38,7 @@ class ProjectController extends Controller
     public function show( $project_id,  $permalink)
     {
         $project = Project::find($project_id);
+        $projects = Project::all();
 
         $project_production_stage = match ($project->production_stage) {
             1 => "TBA",
@@ -49,7 +50,7 @@ class ProjectController extends Controller
 
         // match($project->production_stage)
 
-        return view('projects.show', compact('project', 'project_production_stage'));
+        return view('projects.show', compact('project', 'projects', 'project_production_stage'));
     }
 
 
