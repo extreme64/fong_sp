@@ -1,11 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\DashController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
@@ -36,6 +35,10 @@ Route::get('/', function () {
 
 // About
 Route::get('/about', [AboutController::class, 'index'])->name('about.index');
+
+// Contact
+Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
+
 
 // Npw
 Route::get('/now', function () {
