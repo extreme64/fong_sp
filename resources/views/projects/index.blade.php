@@ -11,27 +11,17 @@
             <div class="grid grid-cols-1 md:grid-cols-1 dark:text-white">
                 <div class="p-6">
                     <h1>Projects</h1>
-                    <p>@forwardcreating.com</p>
-                </div>
-                <div class="p-6">
-                    <p>This is the place to explore interesting development projects and support the main project.
-                        If you choose to support any develpment application, you are helping to create a better future.
-                    </p>
+                    <p>This is the place to explore interesting development projects. </p>
                 </div>
             </div>
         </div>
 
         <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
-            <div class="grid grid-cols-1 md:grid-cols-1">
-                <div class="flex justify-center p-6">
-                    <h2 class="dark:text-white">PROJECTS</h2>
-                </div>
-            </div>
 
             <!-- Section: Design Block -->
             <section class="mb-32 text-center lg:text-left">
                 <h2 class="mb-12 text-center text-3xl font-bold">
-                    Projects we are proud of
+                    Explore
                 </h2>
 
                 <div class="grid gap-x-6 lg:grid-cols-3 lg:gap-x-12">

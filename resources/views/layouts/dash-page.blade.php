@@ -56,18 +56,18 @@
                 <div class="w-full max-w-6xl mx-auto sm:px-6 lg:px-8">
                     <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
 
-
                         <section class="flex flex-col md:flex-row max-w-full mb-32">
 
                             @include('partials.admin-nav')
 
                             @yield('main')
 
-                    </div>
-                    </section>
+                        </section>
 
+                    </div>
                 </div>
             </div>
+
         </div>
     </main>
 
