@@ -22,4 +22,10 @@ class Media extends Model
     {
         return $this->belongsTo(Award::class, 'image');
     }
+
+
+    public function project()
+    {
+        return $this->belongsTo(Project::class, 'feature_id');
+    }
 }

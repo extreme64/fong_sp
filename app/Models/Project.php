@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use App\Models\Media;
+use App\Models\ProjectMedias;
+
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -25,7 +27,12 @@ class Project extends Model
 
     public function media()
     {
-        return $this->belongsTo(Media::class, 'media_id');
+        return $this->belongsTo(Media::class, 'feature_id');
+    }
+
+    public function projectMedias()
+    {
+        return $this->hasMany(ProjectMedias::class, 'project_id');
     }
 
     /**
