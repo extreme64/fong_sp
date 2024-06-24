@@ -1,0 +1,73 @@
+<?php
+
+namespace Database\Seeders;
+
+use Carbon\Carbon;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+
+class ProjectSoftwareRequirementsSeeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        $projectSoftwareRequirements = [
+            [
+                'id' => 1,
+                'project_id' => 1,
+                'requirement_id' => 1,
+                'type_id' => 1,
+                'created_at' => Carbon::parse('2024-06-20 14:38:57'),
+                'updated_at' => Carbon::parse('2024-06-20 14:38:57'),
+            ],
+            [
+                'id' => 2,
+                'project_id' => 1,
+                'requirement_id' => 2,
+                'type_id' => 1,
+                'created_at' => Carbon::parse('2024-06-20 14:38:58'),
+                'updated_at' => Carbon::parse('2024-06-20 14:38:58'),
+            ],
+            [
+                'id' => 9,
+                'project_id' => 3,
+                'requirement_id' => null,
+                'type_id' => 3,
+                'created_at' => Carbon::parse('2024-06-24 16:42:01'),
+                'updated_at' => Carbon::parse('2024-06-24 16:42:01'),
+            ],
+            [
+                'id' => 10,
+                'project_id' => 3,
+                'requirement_id' => null,
+                'type_id' => 3,
+                'created_at' => Carbon::parse('2024-06-24 16:42:01'),
+                'updated_at' => Carbon::parse('2024-06-24 16:42:01'),
+            ],
+            [
+                'id' => 11,
+                'project_id' => 3,
+                'requirement_id' => null,
+                'type_id' => 3,
+                'created_at' => Carbon::parse('2024-06-24 16:43:00'),
+                'updated_at' => Carbon::parse('2024-06-24 16:43:00'),
+            ],
+            [
+                'id' => 12,
+                'project_id' => 3,
+                'requirement_id' => null,
+                'type_id' => 3,
+                'created_at' => Carbon::parse('2024-06-24 16:43:00'),
+                'updated_at' => Carbon::parse('2024-06-24 16:43:00'),
+            ],
+        ];
+
+        DB::table('project_software_requirements')->insert($projectSoftwareRequirements);
+    }
+
+}
