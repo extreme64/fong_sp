@@ -195,7 +195,7 @@
             <div
                 class="px-6 py-12 shrink-0 grow-0 basis-auto w-full flex flex-wrap flex-row justify-center lg:justify-start lg:flex-col items-center lg:flex lg:w-6/12 xl:w-4/12 order-2 lg:order-1">
 
-                @foreach ($cards as $cardName => $cardsItems)
+                @foreach ($descriptionItems as $cardName => $cardsItems)
                     <div
                         class="mt-4 w-full max-w-[18rem] rounded-lg bg-white text-surface shadow-secondary-1 dark:bg-surface-dark dark:text-white">
                         <h2 class="mb-4 px-4 text-2xl font-bold">
@@ -205,10 +205,10 @@
                         <ul class="w-full">
                             @foreach ($cardsItems as $item)
                                 @if($item === end($cardsItems))
-                                    <li class="w-full p-4">{{ $item }}</li>
+                                    <li class="w-full p-4">{{ $item['name'] }}</li>
                                 @else 
                                     <li class="w-full border-b-2 border-neutral-100 border-opacity-100 p-4  dark:border-white/10">
-                                        {{ $item }}
+                                        {{ $item['name'] }}
                                     </li>
                                 @endif
                             @endforeach
