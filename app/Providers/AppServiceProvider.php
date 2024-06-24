@@ -2,8 +2,12 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
+
+use App\Managers\ProjectTypeFactoryInterface;
+use App\Managers\ProjectTypeFactory;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -14,7 +18,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind('project-type-factory', function ($app) {
+            return new ProjectTypeFactory();
+        });
     }
 
     /**
@@ -27,5 +33,7 @@ class AppServiceProvider extends ServiceProvider
         $user = auth()->user();
 
         View::share('user', $user);
+
+        
     }
 }
