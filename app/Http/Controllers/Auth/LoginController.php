@@ -45,7 +45,7 @@ class LoginController extends Controller
 
     protected function authenticated(Request $request, $user)
     {
-        $tokenName = 'login_token';
+        $tokenName = 'web_login_token';
         
         try {
 

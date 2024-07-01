@@ -19,7 +19,7 @@ use Illuminate\Session\Middleware\StartSession;
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
-    
+
 Route::post('/remote-login', [UserApiController::class, 'remoteLogin']);
 
 

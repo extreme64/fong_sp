@@ -30,10 +30,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $user = auth()->user();
-
-        View::share('user', $user);
-
-        
+        // 
     }
 }

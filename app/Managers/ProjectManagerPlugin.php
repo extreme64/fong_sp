@@ -25,6 +25,7 @@ class ProjectManagerPlugin extends ProjectManager
      *
      * @param Project $project The project for which to generate the description
      * @return array The project description containing software, hardware, license, and downloads
+     * @throws InvalidArgumentException if project id is not present.
      */
     public function generateProjectDescription(
         Project $project

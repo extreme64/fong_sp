@@ -5,8 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Exception;
-use Response;
-use Illuminate\Contracts\Routing\ResponseFactory;
+
 
 class UserApiController extends Controller
 {

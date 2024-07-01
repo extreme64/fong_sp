@@ -36,8 +36,12 @@
 
     @auth
         <script>
-            const token = `{{ session('login_token') }}`;
-            localStorage.setItem('login_token', token);
+            let token = '';
+            const tokenSavedInSession = `{{ $token }}`;
+            if(tokenSavedInSession) {
+                localStorage.setItem('login_token', tokenSavedInSession);
+                token = tokenSavedInSession;
+            }
         </script>
     @endauth
 

@@ -63,9 +63,8 @@ Route::prefix('/projects')->group(function () {
 Route::get('images/{filename}', [FileController::class, 'showImage'])->where('filename', '.*')->name('images.show');
 
 
-
 // Dashboard
-Route::middleware('auth')->group(function () {
+Route::middleware('IsDash')->group(function () {
     // Dashboard home
     Route::get('/dashboard', [ProjectsDashboardController::class, 'index'])->name('dashboard');
 
