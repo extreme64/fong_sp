@@ -55,7 +55,7 @@ class AwardsDashboardController extends Controller
         }
 
         return view('admin.awards.awards-new-dashboard', compact('award', 'projects', 'files', 'user', 'award_type_options'))
-            ->with(['mediaPathAwards' => $this->craftPath(MediaConstants::PATH_AWARDS)]);
+            ->with(['mediaPathAwards' => $this->craftPath(MediaConstants::PATH_ROOT)]);
     }
 
 
@@ -83,7 +83,8 @@ class AwardsDashboardController extends Controller
         // $award['permalink'] = ''; 
         $award =  (object)$award;
 
-        return view('admin.awards.awards-new-dashboard', compact(['award', 'projects', 'files', 'award_type_options']));
+        return view('admin.awards.awards-new-dashboard', compact(['award', 'projects', 'files', 'award_type_options']))
+            ->with(['mediaPathAwards' => $this->craftPath(MediaConstants::PATH_AWARDS)]);
     }
 
     public function setting()
