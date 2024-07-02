@@ -27,11 +27,14 @@
                 <div class="grid gap-x-6 lg:grid-cols-3 lg:gap-x-12">
 
                     @foreach ($projects as $project)
+                    <?php
+                    // dd($project)
+                    ?>
                         <div
                             class="block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
                             <div class="relative overflow-hidden bg-cover bg-no-repeat" data-te-ripple-init
                                 data-te-ripple-color="light">
-                                <img src="{{ asset('images/projects/' . $project->media_id) }}"
+                                <img src="{{ asset('images/' . $project->image_url) }}"
                                     class="w-full rounded-t-lg" />
                                 <a href="#!">
                                     <div
