@@ -32,7 +32,17 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::all();
+        $projects = Project::select([ 
+            'projects.id',
+            'projects.title',
+            'projects.video', 
+            'projects.description',
+            'projects.body',
+            'projects.permalink',
+            'media.full_name AS image_url'])
+            ->join('media', 'projects.feature_id', '=', 'media.id')
+            ->where('projects.status', 1)
+            ->get();
 
         foreach ($projects as $project) {
             $project->icon = $this->getIconByType($project->type_id);
