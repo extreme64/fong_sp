@@ -101,7 +101,7 @@ class ImageDragDropUpload extends HTMLElement {
             const storedApiToken = localStorage.getItem('login_token'); 
 
             let headers = new Headers();
-            headers.append('Authorization', `Bearer ${storedApiToken}`);
+                        headers.append('Authorization', `Bearer ${storedApiToken}`);
 
             const formData = new FormData();
             // Loop through the files and append each one with a unique name
@@ -123,10 +123,11 @@ class ImageDragDropUpload extends HTMLElement {
                     
                 });
 
+                // FIXME: localhsot url
                 this.img.remove()
                 data.files.forEach(img => {
                     const newImage = document.createElement('img');
-                    newImage.src = 'http://localhost:8000/storage/' + img.path;
+                    newImage.src = `./images/${img.path}`;
                     newImage.alt = 'new image';
                     this.imgsHolder.appendChild(newImage);
 
