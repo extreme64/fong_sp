@@ -15,11 +15,22 @@
     --var-main-mb: 3rem;
 }
 
-main>div {
+.layout-page > .layout-page__background,
+.layout-dash-page > .layout-page__background {
     background-position: left center;
     background-image: url(/images/misc/rocket.svg);
     background-repeat: no-repeat;
     background-attachment: fixed;
+    background-size: cover;
+}
+
+.layout-project > .layout-project__background {
+    background-position: left center;
+    background-image: url();
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-blend-mode: color-burn;
 }
 
 body {

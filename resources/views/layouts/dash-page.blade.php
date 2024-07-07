@@ -54,7 +54,7 @@
     </header>
 
     <main class="layout-dash-page">
-        <div class="relative flex items-top justify-center min-h-screen bg-neutral-300 dark:bg-gray-900 py-4 sm:pt-0">
+        <div class="layout-page__background relative flex items-top justify-center min-h-screen bg-neutral-300 dark:bg-gray-900 py-4 sm:pt-0">
 
             <div class="relative flex w-full items-top justify-center min-h-screen dark:bg-gray-900 py-4 sm:pt-0">
                 <div class="w-full max-w-6xl mx-auto sm:px-6 lg:px-8">
