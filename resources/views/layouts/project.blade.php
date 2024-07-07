@@ -50,7 +50,10 @@
     </header>
 
     <main class="layout-project">
-        <div class="relative flex items-top justify-center min-h-screen bg-neutral-300 dark:bg-gray-900 py-4 sm:pt-0">
+        <div 
+            class="layout-project__background relative flex items-top justify-center min-h-screen bg-neutral-300 dark:bg-gray-900 py-4 sm:pt-0"
+            style="background-image: url('{{ asset('images/'.$backgroungImageUrl) }}');"
+            >
 
             <div
                 class="content-dev-game relative flex items-top justify-center min-h-screen  dark:bg-gray-900 py-4 sm:pt-0">

@@ -75,6 +75,14 @@ class ProjectController extends Controller
 
         $mediaIds = $project->projectMedias()->pluck('media_id');
         $medias = Media::whereIn('id', $mediaIds)->get();
+
+        $backgroungImageUrl = Media::select([
+            'full_name AS url'])
+            ->where('id',  $project->feature_id)
+            ->get()
+            ->first()->url;
+
+
         $gallery = $medias->toArray();
 
         $project_production_stage = match ($project->production_stage) {
@@ -90,7 +98,7 @@ class ProjectController extends Controller
             ->where('status', '=', 1)
             ->get();
 
-        return view('projects.show', compact('project', 'projects', 'project_production_stage', 'gallery', 'descriptionItems'));
+        return view('projects.show', compact('project', 'projects', 'project_production_stage', 'gallery', 'descriptionItems', 'backgroungImageUrl'));
     }
 
 
