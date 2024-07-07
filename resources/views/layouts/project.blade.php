@@ -62,7 +62,9 @@
 
                         @yield('intro')
                         
-                        @yield('gallery')
+                        @if($gallery)
+                            @yield('gallery')
+                        @endif
                         
                         @yield('start-cta')
                         
